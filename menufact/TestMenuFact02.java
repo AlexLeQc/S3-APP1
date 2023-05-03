@@ -3,6 +3,7 @@ package menufact;
 import ingredients.Ingredient;
 import ingredients.Viande;
 import ingredients.etat.EtatIngredient;
+import ingredients.etat.etatLiquide;
 import ingredients.etat.etatSolide;
 import ingredients.exceptions.IngredientException;
 import menufact.facture.exceptions.FactureException;
@@ -26,14 +27,22 @@ class TestIngredient {
     void getNom() throws IngredientException {
         EtatIngredient solide = new etatSolide(10);
         Ingredient i1 = new Viande("boeuf", solide);
-        assertEquals("boeuf", i1.getNom());
-
+        assertEquals("boeuf", i1.getNom(), "Le test Ingredient Nom a échoué");
+        System.out.println("Le test Ingredient Nom est Reussi");
     }
     @Test
     void getEtat() throws  IngredientException{
         EtatIngredient solide = new etatSolide(10);
         Ingredient i1 = new Viande("boeuf",solide);
-        assertEquals(solide, i1.getEtat());
+        assertEquals(solide, i1.getEtat(), "Le test Ingredient Etat a échoué");
+        System.out.println("Le test Ingredient Etat est Reussi");
+    }
+    @Test
+    void getQuantite() throws IngredientException {
+        EtatIngredient solide = new etatSolide(10);
+        Ingredient i1 = new Viande("boeuf", solide);
+        assertEquals(10,i1.getQuantite(), "Le test Ingredient Quantite a échoué");
+        System.out.println("Le test Ingredient Quantite est reussi");
     }
 }
 //public class TestMenuFact02 {
