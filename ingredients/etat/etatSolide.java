@@ -18,7 +18,7 @@ public class etatSolide implements EtatIngredient{
         }
     }
     public String toString() {
-        return "'Solide' :  {\n\t 'Qty (L)':" + quantiteSolide + "\n}";
+        return "'Solide' :  {\n\t 'Qty (kg)':" + quantiteSolide + "\n}";
     }
     public boolean equals(Object other){
         if (other == this){
