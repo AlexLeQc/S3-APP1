@@ -6,39 +6,50 @@ import menufact.plats.PlatAuMenu;
 import java.util.ArrayList;
 
 public class Menu {
+    private static Menu instance;
     private String description;
     private int courant;
     private ArrayList<PlatAuMenu> plat = new ArrayList<PlatAuMenu>();
 
-    public Menu(String description) {
+    private Menu(String description) {
         this.description = description;
     }
-
-    void ajoute (PlatAuMenu p)
-    {
-        plat.add(p);
+    public static synchronized Menu getInstance(){
+        if (instance == null){
+            instance = new Menu(null);
+        }
+        return instance;
+    }
+    public String getDescription(){
+        return description;
+    }
+    public void setDescription(String description){
+        if (description != null){
+            this.description = description;
+        }
+    }
+    void ajoute (PlatAuMenu p) {
+        if (p != null){
+            plat.add(p);
+        }
     }
 
-    public void position(int i)
-    {
+    public void position(int i) {
         courant = i;
     }
 
-    public PlatAuMenu platCourant()
-    {
+    public PlatAuMenu platCourant() {
         return plat.get(courant);
     }
 
-    public void positionSuivante() throws MenuException
-    {
+    public void positionSuivante() throws MenuException {
         if (courant+1 >= plat.size())
             throw new MenuException("On depasse le nombre maximale de plats.");
         else
             courant++;
     }
 
-    public void positionPrecedente() throws MenuException
-    {
+    public void positionPrecedente() throws MenuException {
         if (courant-1 < 0)
             throw new MenuException("On depasse le nombre minimale de plats");
         else
