@@ -30,11 +30,23 @@ public class PlatSante extends PlatAuMenu {
         return kcal;
     }
 
+    public void setKcal(double kcal){
+        this.kcal = kcal;
+    }
+
     public double getChol() {
         return chol;
     }
 
+    public void setChol(double chol){
+        this.chol = chol;
+    }
+
     public double getGras() {
         return gras;
+    }
+
+    public void setGras(double gras) {
+        this.gras = gras;
     }
 }

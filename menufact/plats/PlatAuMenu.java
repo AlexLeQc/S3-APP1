@@ -1,9 +1,13 @@
 package menufact.plats;
 
+import inventaire.IngredientPlat;
+
 public class PlatAuMenu {
     private int code;
     private String description;
     private double prix;
+
+    private IngredientPlat recette;
 
     public PlatAuMenu(int code, String description, double prix) {
         this.code = code;
@@ -45,5 +49,14 @@ public class PlatAuMenu {
 
     public void setPrix(double prix) {
         this.prix = prix;
+    }
+
+    public IngredientPlat getRecette(){
+        return recette;
+    }
+
+    public void setRecette(IngredientPlat recette){
+        this.recette = recette;
+
     }
 }
