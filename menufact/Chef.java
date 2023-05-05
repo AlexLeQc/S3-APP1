@@ -1,5 +1,9 @@
 package menufact;
 
+import ingredients.exceptions.IngredientException;
+import menufact.plats.PlatChoisi;
+import menufact.plats.exceptions.PlatException;
+
 public class Chef {
     private static Chef instance;
     private String nom;
@@ -19,5 +23,9 @@ public class Chef {
         if (nom != null){
             this.nom = nom;
         }
+    }
+    public PlatChoisi cuisiner(PlatChoisi plataCuisiner)throws IngredientException, PlatException {
+        //plataCuisiner.setEtat(new Commande);
+        return plataCuisiner;
     }
 }

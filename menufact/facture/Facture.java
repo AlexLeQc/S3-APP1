@@ -1,8 +1,14 @@
 package menufact.facture;
 
+import menufact.Chef;
 import menufact.Client;
 import menufact.facture.exceptions.FactureException;
+import menufact.facture.state.FactureEtat;
+import menufact.facture.state.FactureEtatFermee;
+import menufact.facture.state.FactureEtatOuverte;
+import menufact.facture.state.FactureEtatPayee;
 import menufact.plats.PlatChoisi;
+import menufact.plats.exceptions.PlatException;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,7 +25,7 @@ public class Facture {
     private ArrayList<PlatChoisi> platchoisi = new ArrayList<PlatChoisi>();
     private int courant;
     private Client client;
-
+    private Chef chef;
 
     /**********************Constantes ************/
     private final double TPS = 0.05;
@@ -29,8 +35,7 @@ public class Facture {
      *
      * @param client le client de la facture
      */
-    public void associerClient (Client client)
-    {
+    public void associerClient (Client client) {
         this.client = client;
     }
 
@@ -38,8 +43,10 @@ public class Facture {
      * Calcul du sous total de la facture
      * @return le sous total
      */
-    public double sousTotal()
-    {
+    public void associerChef(Chef chef){
+        this.chef = chef;
+    }
+    public double sousTotal() {
         double soustotal=0;
          for (PlatChoisi p : platchoisi)
              soustotal += p.getQuantite() * p.getPlat().getPrix();
@@ -73,36 +80,41 @@ public class Facture {
     /**
      * Permet de chager l'état de la facture à PAYEE
      */
-    public void payer()
-    {
-       etat = FactureEtat.PAYEE;
+    public void payer() throws FactureException{
+        if(etat.changerEtat(new FactureEtatPayee())) {
+            etat = new FactureEtatPayee();
+        } else {
+            throw new FactureException("La facture ne peut pas être payée.");
+        }
     }
     /**
      * Permet de chager l'état de la facture à FERMEE
      */
-    public void fermer()
-    {
-       etat = FactureEtat.FERMEE;
+    public void fermer() throws FactureException{
+        if(etat.changerEtat(new FactureEtatFermee())){
+            etat = new FactureEtatFermee();
+        } else{
+            throw new FactureException("La facture ne peut pas être fermée");
+        }
     }
-
     /**
      * Permet de changer l'état de la facture à OUVERTE
      * @throws FactureException en cas que la facture soit PAYEE
      */
     public void ouvrir() throws FactureException
     {
-        if (etat == FactureEtat.PAYEE)
+        if (etat.changerEtat(new FactureEtatOuverte())){
+            etat = new FactureEtatOuverte();
+        } else {
             throw new FactureException("La facture ne peut pas être reouverte.");
-        else
-            etat = FactureEtat.OUVERTE;
+        }
     }
 
     /**
      *
      * @return l'état de la facture
      */
-    public FactureEtat getEtat()
-    {
+    public FactureEtat getEtat() {
         return etat;
     }
 
@@ -112,7 +124,7 @@ public class Facture {
      */
     public Facture(String description) {
         date = new Date();
-        etat = FactureEtat.OUVERTE;
+        etat = new FactureEtatOuverte();
         courant = -1;
         this.description = description;
     }
@@ -122,12 +134,20 @@ public class Facture {
      * @param p un plat choisi
      * @throws FactureException Seulement si la facture est OUVERTE
      */
-    public void ajoutePlat(PlatChoisi p) throws FactureException
-    {
-        if (etat == FactureEtat.OUVERTE)
-            platchoisi.add(p);
-        else
-            throw new FactureException("On peut ajouter un plat seulement sur une facture OUVERTE.");
+    public void ajoutePlat(PlatChoisi p) throws FactureException, PlatException {
+        if (etat instanceof FactureEtatOuverte) {
+            if(p == null){
+                throw new PlatException("Il est impossible de rajouter un plan null à la facture");
+            }
+            if (chef == null){
+                throw new FactureException("Il n'y a pas de chef");
+            } else {
+
+            }
+
+        }
+
+        throw new FactureException("On peut ajouter un plat seulement sur une facture OUVERTE.");
     }
 
     /**
