@@ -10,10 +10,15 @@ public class PlatAuMenu {
 
     private IngredientPlat recette;
 
-    public PlatAuMenu(int code, String description, double prix) {
+    public PlatAuMenu(int code, String description, double prix) throws PlatException {
         this.code = code;
         this.description = description;
-        this.prix = prix;
+        if (prix >=0){
+            this.prix = prix;
+        } else {
+           throw new PlatException("Le prix est négative");
+        }
+
     }
 
     public PlatAuMenu() {
@@ -51,7 +56,9 @@ public class PlatAuMenu {
     public void setPrix(double prix) {
         this.prix = prix;
     }
-
+    public double getProportion(){
+        return 1.0;
+    }
     public IngredientPlat getRecette(){
         return recette;
     }

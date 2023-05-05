@@ -1,5 +1,6 @@
 package menufact.facture;
 
+import ingredients.exceptions.IngredientException;
 import menufact.Chef;
 import menufact.Client;
 import menufact.facture.exceptions.FactureException;
@@ -142,9 +143,15 @@ public class Facture {
             if (chef == null){
                 throw new FactureException("Il n'y a pas de chef");
             } else {
-
+                try {
+                    chef.cuisiner(p);
+                    platchoisi.add(p);
+                } catch (IngredientException ie) {
+                    System.out.println("Le nombre d'ingrédient est insuffisant" + ie.getMessage());
+                }
             }
-
+        } else {
+            throw new FactureException("L'ajout de plat se fait seulement sur une facture ouverte");
         }
 
         throw new FactureException("On peut ajouter un plat seulement sur une facture OUVERTE.");
@@ -198,5 +205,8 @@ public class Facture {
         factureGenere += "          Le total est de:   " + total() + "\n";
 
         return factureGenere;
+    }
+    public void Subscribe(Chef chef2) {
+        chef = chef2;
     }
 }
