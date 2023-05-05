@@ -19,38 +19,97 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-class TestIngredient {
 
-    @BeforeAll
-    public static void setupClass(){
 
-        System.out.println("----Debut des tests des ingredients----");
+
+    class TestIngredient {
+
+        @BeforeAll
+        public static void setupClass() {
+
+            System.out.println("----DEBUT DES TESTS POUR INGREDIENTS----");
+
+        }
+
+
+        @Test
+        void getNom() throws IngredientException {
+            EtatIngredient solide = new etatSolide(10);
+            Ingredient i1 = new Viande("boeuf", solide);
+            assertEquals("boeuf", i1.getNom(), "Le test Ingredient Nom a échoué");
+            System.out.println("Le test Ingredient Nom est Reussi");
+        }
+
+        @Test
+        void getEtat() throws IngredientException {
+            EtatIngredient solide = new etatSolide(10);
+            Ingredient i1 = new Viande("boeuf", solide);
+            assertEquals(solide, i1.getEtat(), "Le test Ingredient Etat a échoué");
+            System.out.println("Le test Ingredient Etat est Reussi");
+        }
+
+        @Test
+        void getQuantite() throws IngredientException {
+            EtatIngredient solide = new etatSolide(10);
+            Ingredient i1 = new Viande("boeuf", solide);
+            assertEquals(10, i1.getQuantite(), "Le test Ingredient Quantite a échoué");
+            System.out.println("Le test Ingredient Quantite est reussi");
+        }
+    }
+
+class ClientTest {
+
+
+        @BeforeAll
+        public static void setUpClass()
+        {
+            System.out.println("----DEBUT DES TESTS POUR CLIENT----");
+        }
+    public Client client1 = new Client(1,"Gab autiste", "1234 5678 9101 1121");
+    @Test
+    void getIdClient() {
+        System.out.println(client1.toString());
+        assertEquals(1, client1.getIdClient());
 
     }
 
+    @Test
+    void setIdClient() throws FactureException {
+        client1.setIdClient(3);
+        assertEquals(3, client1.getIdClient());
+
+        assertThrows(FactureException.class, () -> { client1.setIdClient(-3);
+        });
+    }
 
     @Test
-    void getNom() throws IngredientException {
-        EtatIngredient solide = new etatSolide(10);
-        Ingredient i1 = new Viande("boeuf", solide);
-        assertEquals("boeuf", i1.getNom(), "Le test Ingredient Nom a échoué");
-        System.out.println("Le test Ingredient Nom est Reussi");
+    void getNom() {
+        assertEquals("Gab autiste", client1.getNom());
     }
+
     @Test
-    void getEtat() throws  IngredientException{
-        EtatIngredient solide = new etatSolide(10);
-        Ingredient i1 = new Viande("boeuf",solide);
-        assertEquals(solide, i1.getEtat(), "Le test Ingredient Etat a échoué");
-        System.out.println("Le test Ingredient Etat est Reussi");
+    void setNom() {
+        client1.setNom("Alex le meilleur");
+        assertEquals("Alex le meilleur", client1.getNom());
     }
+
     @Test
-    void getQuantite() throws IngredientException {
-        EtatIngredient solide = new etatSolide(10);
-        Ingredient i1 = new Viande("boeuf", solide);
-        assertEquals(10,i1.getQuantite(), "Le test Ingredient Quantite a échoué");
-        System.out.println("Le test Ingredient Quantite est reussi");
+    void getNumeroCarteCredit() {
+        assertEquals("1234 5678 9101 1121", client1.getNumeroCarteCredit());
+
+    }
+
+    @Test
+    void setNumeroCarteCredit() {
+        client1.setNumeroCarteCredit("3576 8991 9348 8292");
+        assertEquals("1234 5678 9101 1121", client1.getNumeroCarteCredit());
+    }
+
+    @Test
+    void testToString() {
     }
 }
+
 //public class TestMenuFact02 {
 //
 //

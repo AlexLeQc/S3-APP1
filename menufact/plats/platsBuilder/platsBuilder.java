@@ -4,6 +4,7 @@ import ingredients.Ingredient;
 import inventaire.IngredientPlat;
 import menufact.exceptions.MenuException;
 import menufact.plats.PlatAuMenu;
+import menufact.plats.exceptions.PlatException;
 
 public class PlatsBuilder {
     protected PlatAuMenu plat;
@@ -26,17 +27,17 @@ public class PlatsBuilder {
         return this;
     }
 
-    public PlatsBuilder prixBuild(double prix) throws MenuException {
+    public PlatsBuilder prixBuild(double prix) throws PlatException {
         plat.setPrix(prix);
         return this;
     }
 
-    public PlatsBuilder IngreBuild(IngredientPlat recette) throws MenuException {
+    public PlatsBuilder IngreBuild(IngredientPlat recette) throws PlatException {
         return this;
 
     }
 
-    public PlatsBuilder IngreBuild(Ingredient[] recette) throws MenuException{
+    public PlatsBuilder IngreBuild(Ingredient[] recette) throws PlatException {
         plat.setRecette(new IngredientPlat(recette));
         return this;
 

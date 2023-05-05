@@ -1,6 +1,7 @@
 package menufact.plats;
 
 import inventaire.IngredientPlat;
+import menufact.plats.exceptions.PlatException;
 
 public class PlatAuMenu {
     private int code;
@@ -55,7 +56,10 @@ public class PlatAuMenu {
         return recette;
     }
 
-    public void setRecette(IngredientPlat recette){
+    public void setRecette(IngredientPlat recette) throws PlatException {
+        if (recette == null){
+            throw new PlatException("Une recette ne peux pas etre null");
+        }
         this.recette = recette;
 
     }

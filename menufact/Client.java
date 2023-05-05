@@ -1,5 +1,7 @@
 package menufact;
 
+import menufact.facture.exceptions.FactureException;
+
 public class Client {
     private int idClient;
     private String nom;
@@ -15,7 +17,12 @@ public class Client {
         return idClient;
     }
 
-    public void setIdClient(int idClient) {
+    public void setIdClient(int idClient) throws FactureException {
+
+        if (idClient < 0)
+        {
+            throw new FactureException("un id ne peut pas etre negatif");
+        }
         this.idClient = idClient;
     }
 

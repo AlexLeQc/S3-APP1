@@ -2,6 +2,7 @@ package menufact.plats.platsBuilder;
 
 import menufact.exceptions.MenuException;
 import menufact.plats.PlatEnfant;
+import menufact.plats.exceptions.PlatException;
 
 public class PlatsEnfantsBuilder extends PlatsBuilder {
 
@@ -10,7 +11,7 @@ public class PlatsEnfantsBuilder extends PlatsBuilder {
 
     }
 
-    public PlatsEnfantsBuilder creeProportion(double proportion) throws MenuException{
+    public PlatsEnfantsBuilder creeProportion(double proportion) throws PlatException {
         ((PlatEnfant) plat).setProportion(proportion);
         return this;
     }
