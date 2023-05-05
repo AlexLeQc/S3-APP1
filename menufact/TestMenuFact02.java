@@ -13,15 +13,21 @@ import menufact.plats.PlatAuMenu;
 import menufact.plats.PlatChoisi;
 import menufact.plats.PlatSante;
 
+import org.junit.BeforeClass;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class TestIngredient {
-    @BeforeEach
-    void setup() {
+
+    @BeforeAll
+    public static void setupClass(){
+
+        System.out.println("----Debut des tests des ingredients----");
 
     }
+
 
     @Test
     void getNom() throws IngredientException {

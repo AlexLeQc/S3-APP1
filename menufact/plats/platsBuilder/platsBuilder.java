@@ -1,6 +1,7 @@
 package menufact.plats.platsBuilder;
 
 import ingredients.Ingredient;
+import inventaire.IngredientPlat;
 import menufact.exceptions.MenuException;
 import menufact.plats.PlatAuMenu;
 
@@ -11,7 +12,7 @@ public class PlatsBuilder {
         plat = new PlatAuMenu();
     }
 
-    public PlatAuMenu getResult(){
+    public PlatAuMenu getPlat(){
         return plat;
     }
 
@@ -30,12 +31,16 @@ public class PlatsBuilder {
         return this;
     }
 
-    public PlatsBuilder IngreBuild(){
+    public PlatsBuilder IngreBuild(IngredientPlat recette) throws MenuException {
         return this;
+
     }
 
+    public PlatsBuilder IngreBuild(Ingredient[] recette) throws MenuException{
+        plat.setRecette(new IngredientPlat(recette));
+        return this;
 
-
+    }
 
 
 }
