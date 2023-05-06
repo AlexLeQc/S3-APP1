@@ -38,7 +38,12 @@ public class Client {
         return numeroCarteCredit;
     }
 
-    public void setNumeroCarteCredit(String numeroCarteCredit) {
+    public void setNumeroCarteCredit(String numeroCarteCredit) throws FactureException {
+        if (numeroCarteCredit == null)
+        {
+            throw new FactureException("Un numero de carte ne peut pas etre nul");
+        }
+
         this.numeroCarteCredit = numeroCarteCredit;
     }
 

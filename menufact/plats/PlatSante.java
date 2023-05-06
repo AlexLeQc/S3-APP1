@@ -1,13 +1,14 @@
 package menufact.plats;
 
 import menufact.plats.PlatAuMenu;
+import menufact.plats.exceptions.PlatException;
 
 public class PlatSante extends PlatAuMenu {
     private double kcal;
     private double chol;
     private double gras;
 
-    public PlatSante(int code, String description, double prix, double kcal, double chol, double gras) {
+    public PlatSante(int code, String description, double prix, double kcal, double chol, double gras) throws PlatException {
         super(code, description, prix);
         this.kcal = kcal;
         this.chol = chol;

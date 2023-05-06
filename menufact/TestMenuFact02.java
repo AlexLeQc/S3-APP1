@@ -12,8 +12,22 @@ import menufact.facture.Facture;
 import menufact.plats.PlatAuMenu;
 import menufact.plats.PlatChoisi;
 import menufact.plats.PlatSante;
+import ingredients.*;
+import inventaire.*;
+import menufact.*;
+import menufact.exceptions.*;
+import menufact.facture.*;
+import menufact.plats.*;
+import menufact.plats.exceptions.PlatException;
+import menufact.plats.platsBuilder.*;
+import menufact.plats.PlatEtat.*;
+
+
+
+
 
 import org.junit.BeforeClass;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -59,56 +73,167 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ClientTest {
 
+    public Client client1 = new Client(1, "Gab Pasbon", "1234 5678 9101 1121");
 
-        @BeforeAll
-        public static void setUpClass()
-        {
-            System.out.println("----DEBUT DES TESTS POUR CLIENT----");
-        }
-    public Client client1 = new Client(1,"Gab autiste", "1234 5678 9101 1121");
+
+    @BeforeAll
+    public static void setUpClass() {
+        System.out.println("----DEBUT DES TESTS UNITAIRES POUR CLIENT----\n");
+    }
+
+
     @Test
     void getIdClient() {
         System.out.println(client1.toString());
-        assertEquals(1, client1.getIdClient());
+        System.out.println("Test getIdClient valeur de retour attendu: 1");
+        System.out.println("Valeur recu: " + client1.getIdClient());
+        assertEquals(1, client1.getIdClient(), "Le test de getIdClient a echoue");
+        System.out.println("Le test de getIdClient est reussi!\n\n");
+
 
     }
 
     @Test
     void setIdClient() throws FactureException {
+        System.out.println("Test setIdClient valeur de retour attendu: 3");
         client1.setIdClient(3);
-        assertEquals(3, client1.getIdClient());
+        System.out.println("Valeur recu: " + client1.getIdClient());
+        assertEquals(3, client1.getIdClient(), "Le test de setIdClient a echoue");
+        System.out.println("Le test de setIdClient est reussi!");
 
-        assertThrows(FactureException.class, () -> { client1.setIdClient(-3);
+        System.out.println("Test setIdClient exception");
+        assertThrows(FactureException.class, () -> {
+            client1.setIdClient(-3);
         });
+        System.out.println("Test reussi!\n");
     }
 
     @Test
     void getNom() {
-        assertEquals("Gab autiste", client1.getNom());
+        System.out.println("Test setNom valeur retour attendu: Gab Pasbon");
+        System.out.println("Valeur recu: " + client1.getNom());
+        assertEquals("Gab Pasbon", client1.getNom(), "Erreur");
+        System.out.println("Le test est reussi!\n");
+
     }
 
     @Test
     void setNom() {
-        client1.setNom("Alex le meilleur");
-        assertEquals("Alex le meilleur", client1.getNom());
+        System.out.println("Test setNom valeur retour attendu: Alex Meilleur");
+        client1.setNom("Alex Meilleur");
+        System.out.println("Valeur recu: " + client1.getNom());
+        assertEquals("Alex Meilleur", client1.getNom(), "Erreur");
+        System.out.println("Le test est reussi!\n");
+
     }
 
     @Test
     void getNumeroCarteCredit() {
-        assertEquals("1234 5678 9101 1121", client1.getNumeroCarteCredit());
+        System.out.println("Test getNumeroCarteCredit valeur retour attendu: 1234 5678 9101 1121");
+        System.out.println("Valeur recu: " + client1.getNumeroCarteCredit());
+        assertEquals("1234 5678 9101 1121", client1.getNumeroCarteCredit(), "Erreur");
+        System.out.println("Le test est reussi!\n");
+
 
     }
 
     @Test
-    void setNumeroCarteCredit() {
+    void setNumeroCarteCredit() throws FactureException {
+        System.out.println("Test setNureroCarteCredit valeur attendu: 3576 8991 9348 8292");
         client1.setNumeroCarteCredit("3576 8991 9348 8292");
-        assertEquals("1234 5678 9101 1121", client1.getNumeroCarteCredit());
+        System.out.println("Valeur recu: " + client1.getNumeroCarteCredit());
+        assertEquals("3576 8991 9348 8292", client1.getNumeroCarteCredit(), "Le test a echoue");
+        System.out.println("Le test est reussi!\n");
+
+        System.out.println("Test setNumeroCarteCredit exception");
+        assertThrows(FactureException.class, () -> {
+            client1.setNumeroCarteCredit(null);
+        });
+        System.out.println("Le test est reussi!\n");
+
     }
 
     @Test
     void testToString() {
+        System.out.println("Valeur du client: " + client1.toString());
+        assertEquals("menufact.Client{idClient=1, nom='Gab Pasbon', numeroCarteCredit='1234 5678 9101 1121'}", client1.toString(), "Erreur dans le test toString");
+        System.out.println("Le test toString est reussi!\n");
+    }
+
+
+    @AfterAll
+    public static void AfficheLaFin() {
+        System.out.println("----FIN DES TESTS UNITAIRES DE LA CLASSE CLIENT----\n");
     }
 }
+
+class ChefTest {
+
+    Chef gusteau;
+    Inventaire Frigo;
+
+    Ingredient pain = new Fruit("pain", new etatSolide(4));
+    Ingredient boulette = new Viande("boulette", new etatSolide(3));
+    Ingredient ketchup = new Epice("ketchup", new etatLiquide(250));
+
+    IngredientPlat burgerRecette = new IngredientPlat(new Ingredient[]{pain, boulette, ketchup});
+
+    PlatAuMenu burgerMenu = new PlatAuMenu(69, "Burger de riche", 4.20);
+    PlatChoisi burger = new PlatChoisi(burgerMenu,1);
+
+    PlatChoisi burger2;
+
+    ChefTest() throws IngredientException, PlatException {
+    }
+
+
+    @BeforeAll
+    public static void setUpClass()
+    {
+        System.out.println("----DEBUT DES TESTS UNITAIRES POUR CHEF----\n");
+    }
+
+    @Test
+    void getInstance() {
+        gusteau = Chef.getInstance("gusteau");
+        assertEquals("gusteau", gusteau.getNom());
+
+        Chef remi = Chef.getInstance("remi");
+        assertEquals("gusteau", gusteau.getNom());
+    }
+
+    @Test
+    void getNom() {
+        gusteau = Chef.getInstance("gusteau");
+        assertEquals("gusteau", gusteau.getNom());
+    }
+
+    @Test
+    void setNom() {
+        gusteau = Chef.getInstance("gusteau");
+        gusteau.setNom("gustette");
+        assertEquals("gustette", gusteau.getNom());
+    }
+
+
+    @Test
+    void cuisiner() {
+
+
+
+
+    }
+
+    @Test
+    void testToString() {
+        gusteau = Chef.getInstance("gusteau");
+        assertEquals("Nom: 'gusteau'",gusteau.toString());
+        System.out.println(gusteau.toString());
+
+    }
+}
+
+
 
 //public class TestMenuFact02 {
 //

@@ -1,12 +1,14 @@
 package menufact.plats;
 
+import menufact.plats.exceptions.PlatException;
+
 public class PlatEnfant extends PlatAuMenu{
     private double proportion;
 
     public PlatEnfant() {
     }
 
-    public PlatEnfant(int code, String description, double prix, double proportion) {
+    public PlatEnfant(int code, String description, double prix, double proportion) throws PlatException {
         super(code, description, prix);
         this.proportion = proportion;
     }

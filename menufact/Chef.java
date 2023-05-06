@@ -11,11 +11,12 @@ import menufact.plats.exceptions.PlatException;
 public class Chef {
     private static Chef instance;
     private String nom;
-    private Chef() {
+    private Chef(String nom) {
+        this.nom = nom;
     }
-    public static synchronized Chef getInstance(){
+    public static synchronized Chef getInstance(String nom){
         if (instance == null){
-            instance = new Chef();
+            instance = new Chef(nom);
         }
         return instance;
     }
@@ -28,7 +29,7 @@ public class Chef {
             this.nom = nom;
         }
     }
-    public boolean verifIngredient(PlatChoisi verifPlat) throws PlatException, IngredientException{
+    private boolean verifIngredient(PlatChoisi verifPlat) throws PlatException, IngredientException{
         Inventaire inventaire = Inventaire.getInstance();
         IngredientPlat recette = verifPlat.getPlat().getRecette();
         for (Ingredient ingredient : recette.getIngredients()){
