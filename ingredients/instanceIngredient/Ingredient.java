@@ -1,10 +1,11 @@
-package ingredients;
+package ingredients.instanceIngredient;
 
 import ingredients.etat.EtatIngredient;
 import ingredients.exceptions.IngredientException;
 public abstract class Ingredient {
     protected EtatIngredient etat;
-    private String nom;
+    protected String nom;
+    protected groupeIngredient groupe;
     public Ingredient() {
     }
     public String getNom() {
@@ -20,6 +21,9 @@ public abstract class Ingredient {
     }
     public void setQuantite(double quantite) throws IngredientException {
         etat.setQuantite(quantite);
+    }
+    public void setEtat(EtatIngredient etat){
+        this.etat = etat;
     }
     public EtatIngredient getEtat(){
         return etat;

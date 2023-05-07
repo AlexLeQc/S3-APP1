@@ -1,9 +1,8 @@
 package inventaire;
 
-import ingredients.Ingredient;
+import ingredients.instanceIngredient.Ingredient;
 import ingredients.exceptions.IngredientException;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 

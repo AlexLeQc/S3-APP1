@@ -1,6 +1,6 @@
 package menufact.plats.platsBuilder;
 
-import ingredients.Ingredient;
+import ingredients.instanceIngredient.Ingredient;
 import inventaire.IngredientPlat;
 import menufact.exceptions.MenuException;
 import menufact.plats.PlatAuMenu;

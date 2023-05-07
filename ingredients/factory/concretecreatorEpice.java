@@ -1,12 +1,20 @@
 package ingredients.factory;
 
-import ingredients.Laitier;
-import ingredients.Ingredient;
+import ingredients.instanceIngredient.Epice;
+import ingredients.instanceIngredient.Laitier;
+import ingredients.instanceIngredient.Ingredient;
 import ingredients.etat.EtatIngredient;
 import ingredients.exceptions.IngredientException;
+import ingredients.instanceIngredient.groupeIngredient;
 
 public class concretecreatorEpice implements creatorIngredient{
     public Ingredient creer(String nom, EtatIngredient etat) throws IngredientException {
-        return new Laitier(nom, etat);
+        return new Epice(nom, etat);
+    }
+    public static Ingredient creer(groupeIngredient groupe, String nom) throws IngredientException{
+        if (groupe == null){
+            throw new IngredientException("Le groupe d'ingredient ne peut pas etre null");
+        }
+        return new Epice(groupe,nom);
     }
 }

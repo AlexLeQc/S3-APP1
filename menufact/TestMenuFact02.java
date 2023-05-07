@@ -1,21 +1,12 @@
 package menufact;
 
-import ingredients.Ingredient;
-import ingredients.Viande;
+import ingredients.instanceIngredient.Ingredient;
+import ingredients.instanceIngredient.Viande;
 import ingredients.etat.EtatIngredient;
-import ingredients.etat.etatLiquide;
 import ingredients.etat.etatSolide;
 import ingredients.exceptions.IngredientException;
-import menufact.facture.exceptions.FactureException;
-import menufact.exceptions.MenuException;
-import menufact.facture.Facture;
-import menufact.plats.PlatAuMenu;
-import menufact.plats.PlatChoisi;
-import menufact.plats.PlatSante;
 
-import org.junit.BeforeClass;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
