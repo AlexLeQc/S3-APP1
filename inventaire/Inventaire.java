@@ -1,22 +1,31 @@
 package inventaire;
 
-import ingredients.Ingredient;
+import ingredients.etat.EtatIngredient;
+import ingredients.factory.*;
+import ingredients.instanceIngredient.Ingredient;
 import ingredients.exceptions.IngredientException;
+import ingredients.instanceIngredient.IngredientFactory;
+import ingredients.instanceIngredient.TypeIngredient;
+import ingredients.instanceIngredient.groupeIngredient;
 
 import java.util.HashMap;
 
 public class Inventaire {
-    private static Inventaire instance;
+    private static Inventaire instance = null;
     private HashMap<String, Ingredient> entrepot;
+    private IngredientFactory ingredientFactory;
+
+    private Inventaire(){
+        entrepot = new HashMap<>();
+        ingredientFactory = new IngredientFactory();
+    }
     public static synchronized Inventaire getInstance(){
         if (instance == null){
             instance = new Inventaire();
         }
         return instance;
     }
-    private Inventaire(){
-        entrepot = new HashMap<>();
-    }
+
     public void ajoutIngredient(Ingredient[] ingredients) throws IngredientException {
         if(ingredients == null){
             throw new IngredientException("Impossible d'ajouter une liste null à l'inventaire");
@@ -37,11 +46,73 @@ public class Inventaire {
             }
         }
     }
-    public Ingredient getIngredient(String ingredientNom){
-        return entrepot.get(ingredientNom);
+    public void ajouter(TypeIngredient typeIngredient, EtatIngredient etat, String nom) throws IngredientException {
+        groupeIngredient groupeIng = ingredientFactory.getGroupeIngredient(typeIngredient, etat);
+        String typeIngredientString = typeIngredient.toString();
+        switch (typeIngredientString) {
+            case "FRUIT":
+                Ingredient fruit = concretecreatorFruit.creer(groupeIng, nom);
+                if (entrepot.containsKey(fruit.getNom())) {
+                    Ingredient ingred = entrepot.get(fruit.getNom());
+                    ingred.setQuantite(ingred.getQuantite() + fruit.getQuantite());
+
+                } else {
+                    entrepot.put(fruit.getNom(), fruit);
+                }
+                break;
+            case "LEGUME":
+                Ingredient legume = concretecreatorLegume.creer(groupeIng, nom);
+                if (entrepot.containsKey(legume.getNom())) {
+                    Ingredient ingred = entrepot.get(legume.getNom());
+                    ingred.setQuantite(ingred.getQuantite() + legume.getQuantite());
+
+                } else {
+                    entrepot.put(legume.getNom(), legume);
+                }
+                break;
+            case "VIANDE":
+                Ingredient viande = concretecreatorViande.creer(groupeIng, nom);
+                if (entrepot.containsKey(viande.getNom())) {
+                    Ingredient ingred = entrepot.get(viande.getNom());
+                    ingred.setQuantite(ingred.getQuantite() + viande.getQuantite());
+                } else {
+                    entrepot.put(viande.getNom(), viande);
+                }
+                break;
+            case "LAITIER":
+                Ingredient laitier = concretecreatorLaitier.creer(groupeIng, nom);
+                if (entrepot.containsKey(laitier.getNom())) {
+                    Ingredient ingred = entrepot.get(laitier.getNom());
+                    ingred.setQuantite(ingred.getQuantite() + laitier.getQuantite());
+
+                } else {
+                    entrepot.put(laitier.getNom(), laitier);
+                }
+                break;
+            case "EPICE":
+                Ingredient epice = concretecreatorEpice.creer(groupeIng, nom);
+                if (entrepot.containsKey(epice.getNom())) {
+                    Ingredient ingred = entrepot.get(epice.getNom());
+                    ingred.setQuantite(ingred.getQuantite() + epice.getQuantite());
+
+                } else {
+                    entrepot.put(epice.getNom(), epice);
+                }
+                break;
+        }
     }
-    public int getQuantiteIngredient(){
+    public Ingredient getIngredient(Ingredient ingre){
+        return entrepot.get(ingre.getNom());
+    }
+    public int getSize(){
         return entrepot.size();
+    }
+    public double getIngredientQuantite(Ingredient ingredient){
+        if (entrepot.get(ingredient.getNom()) != null) {
+            return entrepot.get(ingredient.getNom()).getQuantite();
+        } else{
+            return 0;
+        }
     }
     public void consommerRecette(IngredientPlat recette, int quantitePlat, double proportion) throws IngredientException {
         if (recette == null) {
@@ -72,9 +143,9 @@ public class Inventaire {
             ingredientCongelateur.setQuantite(qtyInventaire - qtyRecette);
         }
     }
-    public static void vider() {
+    public void vider() {
         if (instance != null) {
-            instance.entrepot.clear();
+            entrepot.clear();
             instance = null;
         }
     }

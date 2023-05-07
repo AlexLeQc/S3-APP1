@@ -1,6 +1,6 @@
 package menufact;
 
-import ingredients.Ingredient;
+import ingredients.instanceIngredient.Ingredient;
 import ingredients.exceptions.IngredientException;
 import inventaire.IngredientPlat;
 import inventaire.Inventaire;
@@ -34,7 +34,7 @@ public class Chef {
         IngredientPlat recette = verifPlat.getPlat().getRecette();
         for (Ingredient ingredient : recette.getIngredients()){
             double quantiterequise = verifPlat.getQuantite() * verifPlat.getPlat().getProportion() * ingredient.getQuantite();
-            double quantitedispo = inventaire.getIngredient(ingredient.getNom()).getQuantite();
+            double quantitedispo = inventaire.getIngredientQuantite(ingredient);
             if (quantitedispo < quantiterequise){
                 verifPlat.setEtat(new EtatImpossible());
                 throw new IngredientException("Il manque les ingredients : " + ingredient.getNom());

@@ -1,9 +1,8 @@
 package menufact;
 
-import ingredients.Ingredient;
-import ingredients.Viande;
+import ingredients.instanceIngredient.Ingredient;
+import ingredients.instanceIngredient.Viande;
 import ingredients.etat.EtatIngredient;
-import ingredients.etat.etatLiquide;
 import ingredients.etat.etatSolide;
 import ingredients.exceptions.IngredientException;
 import menufact.facture.exceptions.FactureException;
