@@ -12,6 +12,7 @@ import ingredients.etat.*;
 //import ingredients.*;
 import inventaire.*;
 import menufact.plats.PlatEtat.EtatServi;
+import menufact.plats.PlatSante;
 import menufact.plats.exceptions.PlatException;
 
 
@@ -406,27 +407,127 @@ class PlatAuMenuTest {
 
     @Test
     void setDescription() {
-        System.out.println("Test setDescrition");
+        System.out.println("Test setDescrition valeur voulu: Bon Filet mignon");
+        platAuMenu.setDescription("Bon Filet mignon");
+        System.out.println("Valeur recu: " + platAuMenu.getDescription());
+        assertEquals("Bon Filet mignon", platAuMenu.getDescription(), "Erreur dans la fonction getDescription");
+        System.out.println("Test reussi!\n");
+
     }
 
     @Test
     void getPrix() {
+        System.out.println("Test getPrix valeur voulu: 15.99");
+        assertEquals(15.99, platAuMenu.getPrix());
+        System.out.println("Valeur recu: " + platAuMenu.getPrix());
+        System.out.println("Test reussi!\n");
+
     }
 
     @Test
     void setPrix() {
+        System.out.println("Test setPrix valeur voulu: 19.99");
+        platAuMenu.setPrix(19.99);
+        assertEquals(19.99, platAuMenu.getPrix());
+        System.out.println("Valeur recu: " + platAuMenu.getPrix());
+        System.out.println("Test reussi!\n");
     }
 
     @Test
     void getProportion() {
+        System.out.println("Test getProportion valeur voulu: 1");
+        assertEquals(1, platAuMenu.getProportion());
+        System.out.println("Valeur recu: " + platAuMenu.getProportion());
+        System.out.println("Test reussi!\n");
     }
 
     @Test
-    void getRecette() {
+    void getRecette() throws IngredientException, PlatException {
+
+        Ingredient pain = new Legume("pain", new etatSolide(1));
+        Ingredient tomate = new Legume("tomate", new etatSolide(1));
+        Ingredient fromage = new Laitier("fromage", new etatSolide(1));
+        IngredientPlat bruschetta = new IngredientPlat(new Ingredient[]{pain, fromage, tomate});
+        platAuMenu.setRecette(bruschetta);
+        System.out.println("Test getRecette valeur voulu: " + bruschetta);
+        assertEquals(bruschetta, platAuMenu.getRecette(), "Erreur");
+        System.out.println("Valeur recu: " + platAuMenu.getRecette());
+        System.out.println("Test reussi!\n");
     }
 
     @Test
     void setRecette() {
+        System.out.println("Test setPrix valeur voulu: 19.99");
+        platAuMenu.setPrix(19.99);
+        assertEquals(19.99, platAuMenu.getPrix());
+        System.out.println("Valeur recu: " + platAuMenu.getPrix());
+        System.out.println("Test reussi!\n");
+    }
+
+    @AfterAll
+    public static void messageFin(){
+        System.out.println("----FIN DES TEST DE PLATAUMENU----\n\n");
+    }
+}
+
+class MenuTest {
+
+    @BeforeAll
+    public static void setUpClass() {
+        System.out.println("----DEBUT DES TESTS UNITAIRES POUR Menu----\n");
+    }
+
+
+    Menu menu;
+    Menu menu2;
+
+    @Test
+    void getInstance() {
+        System.out.println("Test de getInstance");
+        menu = Menu.getInstance();
+        PlatAuMenu choucroute = new PlatAuMenu();
+        menu.ajoute(choucroute);
+
+        menu2 = Menu.getInstance();
+        PlatAuMenu ragout = new PlatAuMenu();
+        menu2.ajoute(ragout);
+
+        assertEquals(menu, menu2, "Erreur");
+        System.out.println("Test de getInstance reussi!\n");
+
+    }
+
+    @Test
+    void getDescription() {
+
+    }
+
+    @Test
+    void setDescription() {
+    }
+
+    @Test
+    void ajoute() {
+    }
+
+    @Test
+    void position() {
+    }
+
+    @Test
+    void platCourant() {
+    }
+
+    @Test
+    void positionSuivante() {
+    }
+
+    @Test
+    void positionPrecedente() {
+    }
+
+    @Test
+    void testToString() {
     }
 }
 
