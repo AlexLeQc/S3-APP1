@@ -66,8 +66,7 @@ public class Chef {
         }
     }
     public String toString(){
-        return "Chef: {\n\t" +
-                "Nom: '" + nom + "'\n" +
-                "\n}";
+        return "Chef: {Nom: '" + nom + "'" +
+                "}";
     }
 }

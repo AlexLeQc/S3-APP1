@@ -31,7 +31,7 @@ public class Inventaire {
             throw new IngredientException("Impossible d'ajouter une liste null à l'inventaire");
         }
         for (Ingredient ingredient : ingredients) {
-            ajoutIngredient(ingredients);
+            ajoutIngredient(ingredient);
         }
     }
     public void ajoutIngredient(Ingredient ingredient) throws IngredientException{

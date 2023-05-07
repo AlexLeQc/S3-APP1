@@ -1,5 +1,8 @@
 package menufact;
 
+import ingredients.etat.etatLiquide;
+import ingredients.instanceIngredient.Epice;
+import ingredients.instanceIngredient.Fruit;
 import ingredients.instanceIngredient.Ingredient;
 import ingredients.instanceIngredient.Viande;
 import ingredients.etat.EtatIngredient;
@@ -8,8 +11,9 @@ import ingredients.exceptions.IngredientException;
 import menufact.facture.exceptions.FactureException;
 import menufact.plats.PlatAuMenu;
 import menufact.plats.PlatChoisi;
-import ingredients.*;
+//import ingredients.*;
 import inventaire.*;
+import menufact.plats.PlatEtat.EtatServi;
 import menufact.plats.exceptions.PlatException;
 
 
@@ -73,7 +77,7 @@ class ClientTest {
         System.out.println("Test getIdClient valeur de retour attendu: 1");
         System.out.println("Valeur recu: " + client1.getIdClient());
         assertEquals(1, client1.getIdClient(), "Le test de getIdClient a echoue");
-        System.out.println("Le test de getIdClient est reussi!\n\n");
+        System.out.println("Le test de getIdClient est reussi!\n");
 
 
     }
@@ -148,7 +152,7 @@ class ClientTest {
 
     @AfterAll
     public static void AfficheLaFin() {
-        System.out.println("----FIN DES TESTS UNITAIRES DE LA CLASSE CLIENT----\n");
+        System.out.println("----FIN DES TESTS UNITAIRES DE LA CLASSE CLIENT----\n\n");
     }
 }
 
@@ -168,6 +172,7 @@ class ChefTest {
 
     PlatChoisi burger2 = new PlatChoisi(burgerMenu, 2);
 
+
     ChefTest() throws IngredientException, PlatException{}
 
 
@@ -181,40 +186,76 @@ class ChefTest {
     @Test
     void getInstance() {
         gusteau = Chef.getInstance("gusteau");
+        System.out.println("Test getInstance valeur voulue: gusteau");
         assertEquals("gusteau", gusteau.getNom());
+        System.out.println("Valeur recu: " + gusteau.getNom());
+        System.out.println("Test reussi!\n");
 
         Chef remi = Chef.getInstance("remi");
+        System.out.println("Test ajout chef valeur voulue: gusteau");
         assertEquals("gusteau", gusteau.getNom());
+        System.out.println("Valeur recu: " + gusteau.getNom());
+        System.out.println("Test reussi!\n");
     }
 
     @Test
     void getNom() {
+        System.out.println("Test getNom valeur voulue: gusteau");
         gusteau = Chef.getInstance("gusteau");
         assertEquals("gusteau", gusteau.getNom());
+        System.out.println("Valeur recu: " + gusteau.getNom());
+        System.out.println("Test reussi!\n");
     }
 
     @Test
     void setNom() {
+        System.out.println("Test setNom valeur voulue: gustette");
         gusteau = Chef.getInstance("gusteau");
         gusteau.setNom("gustette");
         assertEquals("gustette", gusteau.getNom());
+        System.out.println("Valeur recu: " + gusteau.getNom());
+        System.out.println("Test reussi!\n");
+
     }
 
 
     @Test
-    void cuisiner() {
+    void cuisiner() throws PlatException, IngredientException {
 
 
+        gusteau = Chef.getInstance("gusteau");
+        Frigo = Inventaire.getInstance();
+        burgerMenu.setRecette(burgerRecette);
+        Frigo.ajoutIngredient(new Ingredient[]{pain, boulette,ketchup});
+
+        System.out.println("Test manque d'ingredient");
+        assertThrows(IngredientException.class, () ->{
+            gusteau.cuisiner(burger2);
+        });
+        System.out.println("Test reussi! Il manque des ingredient dans l'exception est lancee\n");
+
+        System.out.println("Test cuisiner valeur souahite: Servi");
+        gusteau.cuisiner(burger);
+        assertTrue(burger.getEtat() instanceof EtatServi);
+        System.out.println("Valeur recu: " + burger.getEtat());
+        System.out.println("Test reussi!\n");
 
 
     }
 
     @Test
     void testToString() {
+        System.out.println("Test toString valeur voulu: Chef: {Nom: 'gusteau'}");
         gusteau = Chef.getInstance("gusteau");
-        assertEquals("Nom: 'gusteau'",gusteau.toString());
-        System.out.println(gusteau.toString());
+        assertEquals("Chef: {Nom: 'gusteau'}",gusteau.toString());
+        System.out.println("Valeur recu" + gusteau.toString());
+        System.out.println("Test reussi!\n");
 
+    }
+
+    @AfterAll
+    public static void messageFin(){
+        System.out.println("----FIN DES TESTS POUR CHEF----\n\n");
     }
 }
 
