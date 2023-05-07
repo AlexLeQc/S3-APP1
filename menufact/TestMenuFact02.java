@@ -7,29 +7,15 @@ import ingredients.etat.etatLiquide;
 import ingredients.etat.etatSolide;
 import ingredients.exceptions.IngredientException;
 import menufact.facture.exceptions.FactureException;
-import menufact.exceptions.MenuException;
-import menufact.facture.Facture;
 import menufact.plats.PlatAuMenu;
 import menufact.plats.PlatChoisi;
-import menufact.plats.PlatSante;
 import ingredients.*;
 import inventaire.*;
-import menufact.*;
-import menufact.exceptions.*;
-import menufact.facture.*;
-import menufact.plats.*;
 import menufact.plats.exceptions.PlatException;
-import menufact.plats.platsBuilder.*;
-import menufact.plats.PlatEtat.*;
 
 
-
-
-
-import org.junit.BeforeClass;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -181,10 +167,10 @@ class ChefTest {
     PlatAuMenu burgerMenu = new PlatAuMenu(69, "Burger de riche", 4.20);
     PlatChoisi burger = new PlatChoisi(burgerMenu,1);
 
-    PlatChoisi burger2;
+    PlatChoisi burger2 = new PlatChoisi(burgerMenu, 2);
 
-    ChefTest() throws IngredientException, PlatException {
-    }
+    ChefTest() throws IngredientException, PlatException{}
+
 
 
     @BeforeAll
