@@ -124,19 +124,41 @@ class InventaireTest {
     }
 
     @Test
-    void consommerRecette() {
+    void consommerRecette() throws IngredientException {
+        System.out.println("Test consommerIngredient valeur voulu: olive: 9, radis 7");
+        Frigo = Inventaire.getInstance();
+        Frigo.vider();
+        Ingredient olive = new Legume("olive",new etatSolide(1));
+        Ingredient radis = new Legume("radis", new etatSolide(1));
+        IngredientPlat recetteSalade = new IngredientPlat(new Ingredient[]{olive, radis});
+        Ingredient olive1 = new Legume("olive",new etatSolide(10));
+        Ingredient radis1 = new Legume("radis", new etatSolide(8));
+        Frigo.ajoutIngredient(new Ingredient[]{olive1, radis1});
+        Frigo.consommerRecette(recetteSalade, 1, 1 );
+        assertEquals(9, Frigo.getIngredientQuantite(olive1));
+        assertEquals(7, Frigo.getIngredientQuantite(radis1));
+        System.out.println("Valeur recu: Olive: " + Frigo.getIngredientQuantite(olive1) + ", Radis: " + Frigo.getIngredientQuantite(radis1));
+        System.out.println("Test reussi!\n");
+
+        System.out.println("Test sil ny a pas assez d'ingredient");
+        assertThrows(IngredientException.class, ()->{
+            Frigo.consommerRecette(recetteSalade,10,1);
+        });
+        System.out.println("Test reussi!\n");
+
+
     }
 
     @Test
     void vider() {
+        System.out.println("test vider valeur attendu: 0");
         Frigo = Inventaire.getInstance();
         Frigo.vider();
         assertEquals(0, Frigo.getSize());
+        System.out.println("Valeur recu: " + Frigo.getSize());
+        System.out.println("Test reussi!\n");
     }
 
-    @Test
-    void testToString() {
-    }
 }
 
 class ClientTest {
