@@ -1,16 +1,14 @@
 package menufact;
 
 import ingredients.etat.etatLiquide;
-import ingredients.instanceIngredient.Epice;
-import ingredients.instanceIngredient.Fruit;
-import ingredients.instanceIngredient.Ingredient;
-import ingredients.instanceIngredient.Viande;
+import ingredients.instanceIngredient.*;
 import ingredients.etat.EtatIngredient;
 import ingredients.etat.etatSolide;
 import ingredients.exceptions.IngredientException;
 import menufact.facture.exceptions.FactureException;
 import menufact.plats.PlatAuMenu;
 import menufact.plats.PlatChoisi;
+import ingredients.etat.*;
 //import ingredients.*;
 import inventaire.*;
 import menufact.plats.PlatEtat.EtatServi;
@@ -59,6 +57,87 @@ import static org.junit.jupiter.api.Assertions.*;
             System.out.println("Le test Ingredient Quantite est reussi");
         }
     }
+
+class InventaireTest {
+
+    Inventaire Frigo;
+
+    Ingredient moutarde = new Epice("moutarde", new etatLiquide(10));
+
+    @BeforeAll
+    public static void setClass(){
+        System.out.println("----TESTS INVENTAIRE----\n");
+    }
+
+
+
+    InventaireTest() throws IngredientException {
+    }
+
+    @Test
+    void getInstance() throws IngredientException {
+        System.out.println("Test de getInstance");
+        Frigo = Inventaire.getInstance();
+        Frigo.ajouter(TypeIngredient.EPICE, new etatSolide(200), "sel");
+        Frigo.ajouter(TypeIngredient.LAITIER, new etatLiquide(1000), "lait");
+        Inventaire congelo;
+        congelo = Inventaire.getInstance();
+        congelo.ajouter(TypeIngredient.LEGUME, new etatSolide(2), "salade");
+        assertEquals(Frigo.toString(), congelo.toString(), "Erreur");
+        System.out.println("Test de getInstance reussi!\n");
+    }
+
+
+    @Test
+    void ajouter() throws IngredientException {
+        Frigo = Inventaire.getInstance();
+        Frigo.ajouter(TypeIngredient.FRUIT, new etatSolide(10), "salade");
+
+    }
+
+    @Test
+    void getIngredient() throws IngredientException {
+        Frigo = Inventaire.getInstance();
+        Frigo.ajoutIngredient(moutarde);
+        assertEquals(moutarde, Frigo.getIngredient(moutarde), "Erreur");
+
+    }
+
+    @Test
+    void getSize() {
+        System.out.println("test getSize valeur attendu: 5");
+        Frigo = Inventaire.getInstance();
+        System.out.println("valeur recu: " + Frigo.getSize());
+        assertEquals(5, Frigo.getSize(),"erreur");
+        System.out.println("Test reussi! \n");
+    }
+
+    @Test
+    void getIngredientQuantite() throws IngredientException {
+        Frigo = Inventaire.getInstance();
+        Frigo.ajoutIngredient(moutarde);
+        System.out.println("test getIngredientQuantite valeur attendu: 10");
+        assertEquals(10, Frigo.getIngredientQuantite(moutarde));
+        System.out.println("Valeur recu: " + Frigo.getIngredientQuantite(moutarde));
+        System.out.println("Test reussi! \n");
+
+    }
+
+    @Test
+    void consommerRecette() {
+    }
+
+    @Test
+    void vider() {
+        Frigo = Inventaire.getInstance();
+        Frigo.vider();
+        assertEquals(0, Frigo.getSize());
+    }
+
+    @Test
+    void testToString() {
+    }
+}
 
 class ClientTest {
 

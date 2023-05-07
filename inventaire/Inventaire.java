@@ -14,6 +14,7 @@ public class Inventaire {
     private static Inventaire instance = null;
     private HashMap<String, Ingredient> entrepot;
     private IngredientFactory ingredientFactory;
+    private int size = 0;
 
     private Inventaire(){
         entrepot = new HashMap<>();
@@ -32,6 +33,7 @@ public class Inventaire {
         }
         for (Ingredient ingredient : ingredients) {
             ajoutIngredient(ingredient);
+            size++;
         }
     }
     public void ajoutIngredient(Ingredient ingredient) throws IngredientException{
@@ -43,6 +45,7 @@ public class Inventaire {
                 ingredient2.setQuantite(ingredient2.getQuantite() + ingredient.getQuantite()) ;
             } else {
                 entrepot.put(ingredient.getNom(), ingredient);
+                size++;
             }
         }
     }
@@ -100,12 +103,13 @@ public class Inventaire {
                 }
                 break;
         }
+        size++;
     }
     public Ingredient getIngredient(Ingredient ingre){
         return entrepot.get(ingre.getNom());
     }
     public int getSize(){
-        return entrepot.size();
+        return size;
     }
     public double getIngredientQuantite(Ingredient ingredient){
         if (entrepot.get(ingredient.getNom()) != null) {
@@ -147,6 +151,7 @@ public class Inventaire {
         if (instance != null) {
             entrepot.clear();
             instance = null;
+            size = 0;
         }
     }
 
