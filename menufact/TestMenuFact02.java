@@ -259,6 +259,76 @@ class ChefTest {
     }
 }
 
+class PlatAuMenuTest {
+    PlatAuMenu platAuMenu = new PlatAuMenu(20,"Filet mignon",15.99);
+
+    PlatAuMenuTest() throws PlatException {
+    }
+
+    @BeforeAll
+    public static void setUpClass() {
+        System.out.println("----DEBUT DES TESTS UNITAIRES POUR PlatAuMenu----\n");
+    }
+
+    @Test
+    void testToString() {
+        System.out.println("Test toString valeur voulu: " + platAuMenu.toString());
+        System.out.println("Valeur recu: " + platAuMenu.toString());
+        assertEquals("menufact.plats.PlatAuMenu{code=20, description='Filet mignon', prix=15.99}", platAuMenu.toString(), "Erreur dans le testtoString");
+        System.out.println("Test reussi!\n");
+    }
+
+    @Test
+    void getCode() {
+        System.out.println("Test getCode valeur voulu: 20");
+        System.out.println("Valeur recu: " + platAuMenu.getCode());
+        assertEquals(20, platAuMenu.getCode(), "Erreur dans la fonction getCode");
+        System.out.println("Test reussi!\n");
+    }
+
+    @Test
+    void setCode() {
+        System.out.println("Test setCode valeur voulu: 21");
+        platAuMenu.setCode(21);
+        System.out.println("Valeur recu: " + platAuMenu.getCode());
+        assertEquals(21, platAuMenu.getCode(), "Erreur dans la fonction setCode");
+        System.out.println("Test reussi!\n");
+    }
+
+    @Test
+    void getDescription() {
+        System.out.println("Test getDescription valeur voulu: 'Filet mignon'");
+        System.out.println("Valeur recu: " + platAuMenu.getDescription());
+        assertEquals("Filet mignon", platAuMenu.getDescription(), "Erreur dans la fonction getDescription");
+        System.out.println("Test reussi!\n");
+    }
+
+    @Test
+    void setDescription() {
+        System.out.println("Test setDescrition");
+    }
+
+    @Test
+    void getPrix() {
+    }
+
+    @Test
+    void setPrix() {
+    }
+
+    @Test
+    void getProportion() {
+    }
+
+    @Test
+    void getRecette() {
+    }
+
+    @Test
+    void setRecette() {
+    }
+}
+
 
 
 //public class TestMenuFact02 {
