@@ -30,7 +30,7 @@ public class PlatAuMenu {
                 "code=" + code +
                 ", description='" + description + '\'' +
                 ", prix=" + prix +
-                "}\n";
+                "}";
     }
 
     public int getCode() {
