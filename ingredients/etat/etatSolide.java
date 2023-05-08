@@ -28,7 +28,7 @@ public class etatSolide implements EtatIngredient{
         if (other == this){
             return true;
         }
-        if (other instanceof etatLiquide){
+        if (other instanceof etatSolide){
             return this.getQuantite() == ((EtatIngredient) other).getQuantite();
         } else {
             return false;

@@ -40,6 +40,10 @@ public abstract class Ingredient {
         }
     }
 
+    public groupeIngredient getGroupe(){
+        return groupe;
+    }
+
     public String toString(){
         return "Ingredient : " + this.getNom() + " Etat : " + etat + "\n";
     }
