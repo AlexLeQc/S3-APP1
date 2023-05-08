@@ -518,38 +518,45 @@ class MenuTest {
 
 
     @Test
-    void ajoute() throws PlatException, MenuException {
+    void ajouteEtNavigationTest() throws PlatException, MenuException {
         menu = Menu.getInstance();
+
+        System.out.println("Test ajoute au menu");
         PlatAuMenu canardConfie = new PlatAuMenu(45, "Canard de riche", 69);
+        PlatAuMenu crevette = new PlatAuMenu(45, "Crevette de riche", 69);
+        PlatAuMenu crocodile = new PlatAuMenu(45, "Crocodile de riche", 69);
         menu.ajoute(canardConfie);
+        menu.ajoute(crevette);
+        menu.ajoute(crocodile);
         menu.position(2);
-        assertEquals(menu.platCourant(), canardConfie);
-        System.out.println(menu.toString());
+        assertEquals(menu.platCourant(), canardConfie, "Erreur");
+        //System.out.println(menu.toString());
+        System.out.println("Test reussi! \n");
+
+        System.out.println("Test de la position");
+        menu.position(4);
+        assertEquals(menu.platCourant(), crocodile, "Erreur");
+        System.out.println("Test reussi! \n");
+
+        System.out.println("Test position precedente");
+        menu.positionPrecedente();
+        menu.positionPrecedente();
+        assertEquals(menu.platCourant(),canardConfie, "Erreur");
+        System.out.println("Test reussi! \n");
+
+        System.out.println("Test position suivante");
+        menu.positionSuivante();
+        assertEquals(menu.platCourant(), crevette, "Erreur");
+        System.out.println("Test reussi! \n");
 
 
     }
 
-    @Test
-    void position() {
-        menu = Menu.getInstance();
-        
+    @AfterAll
+    public static void messageFin(){
+        System.out.println("----FIN DES TESTS POUR Menu!----\n\n");
     }
 
-    @Test
-    void platCourant() {
-    }
-
-    @Test
-    void positionSuivante() {
-    }
-
-    @Test
-    void positionPrecedente() {
-    }
-
-    @Test
-    void testToString() {
-    }
 
 
 }
