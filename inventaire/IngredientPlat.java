@@ -45,4 +45,17 @@ public class IngredientPlat {
     public String toString() {
         return "Recette:" + recette;
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) {
+            return true;
+        }
+        if (other instanceof IngredientPlat) {
+            IngredientPlat otherPlat = (IngredientPlat) other;
+            return recette.equals(otherPlat.recette);
+        }
+        return false;
+    }
 }
+
