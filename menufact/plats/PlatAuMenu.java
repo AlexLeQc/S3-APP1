@@ -22,6 +22,7 @@ public class PlatAuMenu {
     }
 
     public PlatAuMenu() {
+
     }
 
     @Override

@@ -28,7 +28,7 @@ public class Menu {
             this.description = description;
         }
     }
-    void ajoute (PlatAuMenu p) {
+    void ajoute (PlatAuMenu p) throws MenuException {
         if (p != null){
             plat.add(p);
         }

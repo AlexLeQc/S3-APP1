@@ -5,6 +5,7 @@ import ingredients.instanceIngredient.*;
 import ingredients.etat.EtatIngredient;
 import ingredients.etat.etatSolide;
 import ingredients.exceptions.IngredientException;
+import menufact.exceptions.MenuException;
 import menufact.facture.exceptions.FactureException;
 import menufact.plats.PlatAuMenu;
 import menufact.plats.PlatChoisi;
@@ -482,14 +483,14 @@ class MenuTest {
     Menu menu2;
 
     @Test
-    void getInstance() {
+    void getInstance() throws PlatException, MenuException {
         System.out.println("Test de getInstance");
         menu = Menu.getInstance();
-        PlatAuMenu choucroute = new PlatAuMenu();
+        PlatAuMenu choucroute = new PlatAuMenu(1, "coucroute", 20);
         menu.ajoute(choucroute);
 
         menu2 = Menu.getInstance();
-        PlatAuMenu ragout = new PlatAuMenu();
+        PlatAuMenu ragout = new PlatAuMenu(1, "ragout", 10);
         menu2.ajoute(ragout);
 
         assertEquals(menu, menu2, "Erreur");
@@ -498,16 +499,33 @@ class MenuTest {
     }
 
     @Test
-    void getDescription() {
-
-    }
-
-    @Test
     void setDescription() {
+        menu = Menu.getInstance();
+        System.out.println("Test de setDescription");
+        menu.setDescription("Menu du resto le meilleur en ville");
+        assertEquals("Menu du resto le meilleur en ville", menu.getDescription());
+
     }
 
     @Test
-    void ajoute() {
+    void getDescription() {
+        menu = Menu.getInstance();
+        assertEquals("Menu du resto le meilleur en ville", menu.getDescription());
+
+    }
+
+
+
+    @Test
+    void ajoute() throws PlatException, MenuException {
+        menu = Menu.getInstance();
+        PlatAuMenu canardConfie = new PlatAuMenu(45, "Canard de riche", 69);
+        menu.ajoute(canardConfie);
+        menu.position(2);
+        assertEquals(menu.platCourant(), canardConfie);
+        System.out.println(menu.toString());
+
+
     }
 
     @Test
