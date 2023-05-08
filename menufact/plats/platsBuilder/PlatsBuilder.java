@@ -33,8 +33,8 @@ public class PlatsBuilder {
     }
 
     public PlatsBuilder IngreBuild(IngredientPlat recette) throws PlatException {
+        plat.setRecette(recette);
         return this;
-
     }
 
     public PlatsBuilder IngreBuild(Ingredient[] recette) throws PlatException {

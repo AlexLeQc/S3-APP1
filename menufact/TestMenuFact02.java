@@ -1,6 +1,7 @@
 package menufact;
 
 import ingredients.etat.etatLiquide;
+import ingredients.factory.concretecreatorLegume;
 import ingredients.instanceIngredient.*;
 import ingredients.etat.EtatIngredient;
 import ingredients.etat.etatSolide;
@@ -13,11 +14,15 @@ import ingredients.etat.*;
 //import ingredients.*;
 import inventaire.*;
 import menufact.plats.PlatEnfant;
-import menufact.plats.PlatEtat.EtatServi;
+import menufact.plats.PlatEtat.*;
 import menufact.plats.PlatSante;
 import menufact.plats.exceptions.PlatException;
 
 
+import menufact.plats.platsBuilder.PlatSanteBuilder;
+import menufact.plats.platsBuilder.PlatsBuilder;
+import menufact.plats.platsBuilder.PlatsEnfantsBuilder;
+import org.junit.Before;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -592,7 +597,7 @@ class PlatEnfantTest {
 }
 
 class PlatSanteTest {
-
+    @BeforeAll
     public static void setUpClass() {
         System.out.println("----DEBUT DES TESTS UNITAIRES POUR PlatSante----\n");
     }
@@ -657,6 +662,144 @@ class PlatSanteTest {
         System.out.println("Valeur recu: " + platSante.getGras());
         assertEquals(0.75, platSante.getGras(), "Erreur fonction setKcal");
         System.out.println("Test reussi!\n");
+    }
+}
+class PlatSanteBuilderTest {
+    private PlatSanteBuilder builder = new PlatSanteBuilder();
+
+    @Test
+    public void testBuildKcal() throws PlatException {
+        double expectedKcal = 500.0;
+        PlatSante plat = builder.buildKcal(expectedKcal).getPlatSante();
+        double actualKcal = plat.getKcal();
+        assertEquals(expectedKcal, actualKcal);
+    }
+
+    @Test
+    public void testBuildChol() throws PlatException {
+        double expectedChol = 10.0;
+        PlatSante plat = builder.buildChol(expectedChol).getPlatSante();
+        double actualChol = plat.getChol();
+        assertEquals(expectedChol, actualChol);
+    }
+
+    @Test
+    public void testBuildGras() throws PlatException {
+        double expectedGras = 20.0;
+        PlatSante plat = builder.buildGras(expectedGras).getPlatSante();
+        double actualGras = plat.getGras();
+        assertEquals(expectedGras, actualGras);
+    }
+
+    @Test
+    public void testClear() throws PlatException {
+        PlatSante plat = builder.buildKcal(500.0)
+                .buildChol(10.0)
+                .buildGras(20.0)
+                .clear()
+                .getPlatSante();
+        assertEquals(0.0, plat.getKcal());
+        assertEquals(0.0, plat.getChol());
+        assertEquals(0.0, plat.getGras());
+    }
+}
+class PlatsBuilderTest {
+    private PlatsBuilder platsBuilder = new PlatsBuilder();
+
+    @Test
+    public void testDescriptionBuild() {
+        String expectedDescription = "Plat de test";
+        PlatAuMenu plat = platsBuilder.descriptionBuild(expectedDescription).getPlat();
+        assertEquals(expectedDescription, plat.getDescription());
+    }
+
+    @Test
+    public void testPrixBuild() throws PlatException {
+        double expectedPrix = 9.99;
+        PlatAuMenu plat = platsBuilder.prixBuild(expectedPrix).getPlat();
+        assertEquals(expectedPrix, plat.getPrix());
+    }
+
+    @Test
+    public void testIngreBuildWithIngredientPlat() throws PlatException, IngredientException {
+        Ingredient[] ingredients = {new Laitier("Ingredient 1", new etatLiquide(20)), new Fruit("Ingredient 2", new etatSolide(400))};
+        IngredientPlat expectedRecette = new IngredientPlat(ingredients);
+
+        PlatAuMenu plat = platsBuilder.IngreBuild(expectedRecette).getPlat();
+        assertEquals(expectedRecette, plat.getRecette());
+    }
+
+    @Test
+    public void testIngreBuildWithIngredientArray() throws PlatException, IngredientException {
+        Ingredient[] ingredients = {new Legume("Ingredient 1", new etatSolide(100)), new Viande("Ingredient 2", new etatSolide(200))};
+
+        PlatAuMenu plat = platsBuilder.IngreBuild(ingredients).getPlat();
+        IngredientPlat expectedRecette = new IngredientPlat(ingredients);
+        assertEquals(expectedRecette, plat.getRecette());
+    }
+}
+class PlatsEnfantsBuilderTest {
+    private PlatsEnfantsBuilder platsEnfantsBuilder = new PlatsEnfantsBuilder();
+
+    @Test
+    public void testCreeProportion() throws PlatException {
+        double expectedProportion = 0.5;
+        PlatAuMenu plat = platsEnfantsBuilder.creeProportion(expectedProportion).getPlat();
+        PlatEnfant platEnfant = (PlatEnfant) plat;
+        assertEquals(expectedProportion, platEnfant.getProportion());
+    }
+
+    @Test
+    public void testClear() {
+        PlatAuMenu plat = platsEnfantsBuilder.clear().getPlat();
+        PlatEnfant platEnfant = (PlatEnfant) plat;
+        assertEquals(0.0, platEnfant.getProportion());
+    }
+}
+class EtatPlatTest {
+    @Test
+    public void testEtatCommande() {
+        EtatPlat etatCommande = new EtatCommande();
+        assertEquals(true, etatCommande.changerEtat(new EtatEnPreparation()));
+        assertEquals(true, etatCommande.changerEtat(new EtatImpossible()));
+        assertEquals(false, etatCommande.changerEtat(new EtatServi()));
+        assertEquals(false, etatCommande.changerEtat(new EtatTerminer()));
+    }
+
+    @Test
+    public void testEtatEnPreparation() {
+        EtatPlat etatEnPreparation = new EtatEnPreparation();
+        assertEquals(true, etatEnPreparation.changerEtat(new EtatServi()));
+        assertEquals(true, etatEnPreparation.changerEtat(new EtatTerminer()));
+        assertEquals(true, etatEnPreparation.changerEtat(new EtatImpossible()));
+        assertEquals(false, etatEnPreparation.changerEtat(new EtatCommande()));
+    }
+
+    @Test
+    public void testEtatImpossible() {
+        EtatPlat etatImpossible = new EtatImpossible();
+        assertEquals(false, etatImpossible.changerEtat(new EtatCommande()));
+        assertEquals(false, etatImpossible.changerEtat(new EtatEnPreparation()));
+        assertEquals(false, etatImpossible.changerEtat(new EtatServi()));
+        assertEquals(false, etatImpossible.changerEtat(new EtatTerminer()));
+    }
+
+    @Test
+    public void testEtatServi() {
+        EtatPlat etatServi = new EtatServi();
+        assertEquals(true, etatServi.changerEtat(new EtatImpossible()));
+        assertEquals(false, etatServi.changerEtat(new EtatCommande()));
+        assertEquals(false, etatServi.changerEtat(new EtatEnPreparation()));
+        assertEquals(false, etatServi.changerEtat(new EtatTerminer()));
+    }
+
+    @Test
+    public void testEtatTerminer() {
+        EtatPlat etatTerminer = new EtatTerminer();
+        assertEquals(true, etatTerminer.changerEtat(new EtatServi()));
+        assertEquals(true, etatTerminer.changerEtat(new EtatImpossible()));
+        assertEquals(false, etatTerminer.changerEtat(new EtatCommande()));
+        assertEquals(false, etatTerminer.changerEtat(new EtatEnPreparation()));
     }
 }
 
