@@ -12,6 +12,7 @@ import menufact.plats.PlatChoisi;
 import ingredients.etat.*;
 //import ingredients.*;
 import inventaire.*;
+import menufact.plats.PlatEnfant;
 import menufact.plats.PlatEtat.EtatServi;
 import menufact.plats.PlatSante;
 import menufact.plats.exceptions.PlatException;
@@ -549,9 +550,115 @@ class MenuTest {
     @Test
     void testToString() {
     }
+
+
 }
 
+class PlatEnfantTest {
 
+    PlatEnfant platEnfant = new PlatEnfant(20, "Filet mignon", 9.99, 0.5);
+
+    PlatEnfantTest() throws PlatException {
+    }
+
+    @BeforeAll
+    public static void setUpClass() {
+        System.out.println("----DEBUT DES TESTS UNITAIRES POUR PlatEnfant----\n");
+    }
+    @Test
+    void getProportion() {
+        System.out.println("Test getProportion valeur voulu: 0.5");
+        System.out.println("Valeur recu: " + platEnfant.getProportion());
+        assertEquals(0.5, platEnfant.getProportion(), "Error dans la fonction getProportion");
+        System.out.println("Test reussi!\n");
+    }
+
+    @Test
+    void setProportion() {
+        System.out.println("Test setProportion valeur voulu: 0.75");
+        platEnfant.setProportion(0.75);
+        System.out.println("Valeur recu: " + platEnfant.getProportion());
+        assertEquals(0.75, platEnfant.getProportion(), "Errror dans la fonction setProportion");
+        System.out.println("Test reussi!\n");
+    }
+
+    @Test
+    void testToString() {
+        System.out.println("Test toString valeur voulu: PlatEnfant{proportion=0.5} menufact.plats.PlatAuMenu{code=20, description='Filet mignon', prix=9.99}");
+        System.out.println("Valeur recu: " + platEnfant.toString());
+        assertEquals("PlatEnfant{proportion=0.5} menufact.plats.PlatAuMenu{code=20, description='Filet mignon', prix=9.99}", platEnfant.toString(), "Erreur dans la fonction toString");
+        System.out.println("Test reussi!\n");
+    }
+}
+
+class PlatSanteTest {
+
+    public static void setUpClass() {
+        System.out.println("----DEBUT DES TESTS UNITAIRES POUR PlatSante----\n");
+    }
+    PlatSante platSante = new PlatSante(23, "Filet mignon", 43.99, 83.44, 23.11, 1.22);
+
+    PlatSanteTest() throws PlatException {
+    }
+    @Test
+    void testToString() {
+        System.out.println("Test toString valeur voulu: menufact.plats.PlatSante{kcal=83.44, chol=23.11, gras=1.22} menufact.plats.PlatAuMenu{code=23, description='Filet mignon', prix=43.99} ");
+        System.out.println("Valeur recu: " + platSante.toString());
+        assertEquals("menufact.plats.PlatSante{kcal=83.44, chol=23.11, gras=1.22} menufact.plats.PlatAuMenu{code=23, description='Filet mignon', prix=43.99}", platSante.toString(), "Erreur fonction toString");
+        System.out.println("Test reussi!\n");
+    }
+
+    @Test
+    void getKcal() {
+        System.out.println("Test getKcal valeur voulu: 83.44");
+        System.out.println("Valeur recu: " + platSante.getKcal());
+        assertEquals(83.44, platSante.getKcal(), "Erreur fonction getKcal");
+        System.out.println("Test reussi!\n");
+    }
+
+    @Test
+    void setKcal() {
+        System.out.println("Test setKcal valeur voulu: 42.01");
+        platSante.setKcal(42.01);
+        System.out.println("Valeur recu: " + platSante.getKcal());
+        assertEquals(42.01, platSante.getKcal(), "Erreur fonction setKcal");
+        System.out.println("Test reussi!\n");
+    }
+
+    @Test
+    void getChol() {
+        System.out.println("Test getChol valeur voulu: 23.11");
+        System.out.println("Valeur recu: " + platSante.getChol());
+        assertEquals(23.11, platSante.getChol(), "Erreur fonction getChol");
+        System.out.println("Test reussi!\n");
+    }
+
+    @Test
+    void setChol() {
+        System.out.println("Test setChol valeur voulu: 3.03");
+        platSante.setChol(3.03);
+        System.out.println("Valeur recu: " + platSante.getChol());
+        assertEquals(3.03, platSante.getChol(), "Erreur fonction setKcal");
+        System.out.println("Test reussi!\n");
+    }
+
+    @Test
+    void getGras() {
+        System.out.println("Test getGras valeur voulu: 1.22");
+        System.out.println("Valeur recu: " + platSante.getGras());
+        assertEquals(1.22, platSante.getGras(), "Erreur fonction getChol");
+        System.out.println("Test reussi!\n");
+    }
+
+    @Test
+    void setGras() {
+        System.out.println("Test setGras valeur voulu: 0.75");
+        platSante.setGras(0.75);
+        System.out.println("Valeur recu: " + platSante.getGras());
+        assertEquals(0.75, platSante.getGras(), "Erreur fonction setKcal");
+        System.out.println("Test reussi!\n");
+    }
+}
 
 //public class TestMenuFact02 {
 //

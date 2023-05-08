@@ -66,7 +66,7 @@ public class Facture {
      *
      * @return la valeur de la TPS
      */
-    private double tps(){
+    public double tps(){
         return TPS*sousTotal();
     }
 
@@ -74,7 +74,7 @@ public class Facture {
      *
      * @return la valeur de la TVQ
      */
-    private  double tvq(){
+    public  double tvq(){
         return TVQ*(TPS+1)*sousTotal();
     }
 
@@ -161,52 +161,72 @@ public class Facture {
      *
      * @return le contenu de la facture en chaîne de caracteres
      */
-    @Override
-    public String toString() {
-        return "menufact.facture.Facture{" +
-                "date=" + date +
-                ", description='" + description + '\'' +
-                ", etat=" + etat +
-                ", platchoisi=" + platchoisi +
-                ", courant=" + courant +
-                ", client=" + client +
-                ", TPS=" + TPS +
-                ", TVQ=" + TVQ +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "menufact.facture.Facture{" +
+//                "date=" + date +
+//                ", description='" + description + '\'' +
+//                ", etat=" + etat +
+//                ", platchoisi=" + platchoisi +
+//                ", courant=" + courant +
+//                ", client=" + client +
+//                ", TPS=" + TPS +
+//                ", TVQ=" + TVQ +
+//                '}';
+//    }
 
     /**
      *
      * @return une chaîne de caractères avec la facture à imprimer
      */
-    public String genererFacture()
-    {
-        String lesPlats = new String();
-        String factureGenere = new String();
-
-        int i =1;
-
-
-        factureGenere =   "Facture generee.\n" +
-                          "Date:" + date + "\n" +
-                          "Description: " + description + "\n" +
-                          "Client:" + client.getNom() + "\n" +
-                          "Les plats commandes:" + "\n" + lesPlats;
-
-        factureGenere += "Seq   Plat         Prix   Quantite\n";
-        for (PlatChoisi plat : platchoisi)
-        {
-            factureGenere +=  i + "     " + plat.getPlat().getDescription() +  "  " + plat.getPlat().getPrix() +  "      " + plat.getQuantite() + "\n";
-            i++;
-        }
-
-        factureGenere += "          TPS:               " + tps() + "\n";
-        factureGenere += "          TVQ:               " + tvq() + "\n";
-        factureGenere += "          Le total est de:   " + total() + "\n";
-
-        return factureGenere;
-    }
-    public void Subscribe(Chef chef2) {
+//    public String genererFacture()
+//    {
+//        String lesPlats = new String();
+//        String factureGenere = new String();
+//
+//        int i =1;
+//
+//
+//        factureGenere =   "Facture generee.\n" +
+//                          "Date:" + date + "\n" +
+//                          "Description: " + description + "\n" +
+//                          "Client:" + client.getNom() + "\n" +
+//                          "Les plats commandes:" + "\n" + lesPlats;
+//
+//        factureGenere += "Seq   Plat         Prix   Quantite\n";
+//        for (PlatChoisi plat : platchoisi)
+//        {
+//            factureGenere +=  i + "     " + plat.getPlat().getDescription() +  "  " + plat.getPlat().getPrix() +  "      " + plat.getQuantite() + "\n";
+//            i++;
+//        }
+//
+//        factureGenere += "          TPS:               " + tps() + "\n";
+//        factureGenere += "          TVQ:               " + tvq() + "\n";
+//        factureGenere += "          Le total est de:   " + total() + "\n";
+//
+//        return factureGenere;
+//    }
+    public void Observer(Chef chef2) {
         chef = chef2;
+    }
+
+    public Date getDate(){
+        return date;
+    }
+
+    public String getDescription(){
+        return description;
+    }
+
+    public ArrayList<PlatChoisi> getPlatChoisi(){
+        return platchoisi;
+    }
+
+    public int getCourant(){
+        return courant;
+    }
+
+    public Client getClient(){
+        return client;
     }
 }
