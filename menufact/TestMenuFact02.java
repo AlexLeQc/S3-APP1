@@ -530,6 +530,8 @@ class MenuTest {
 
     @Test
     void position() {
+        menu = Menu.getInstance();
+        
     }
 
     @Test
