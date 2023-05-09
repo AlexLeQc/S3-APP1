@@ -4,16 +4,17 @@
 
 _object: Class_
 --
+--
 id: Long="36548"
 [waiting for message]</help_text>
-  <zoom_level>6</zoom_level>
+  <zoom_level>5</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1872</x>
-      <y>1272</y>
-      <w>162</w>
-      <h>144</h>
+      <x>1575</x>
+      <y>1165</y>
+      <w>135</w>
+      <h>125</h>
     </coordinates>
     <panel_attributes>Menu
 --
@@ -30,1048 +31,17 @@ id: Long="36548"
 + platCourant(): PlatAuMenu
 + positionSuivante(): void 
 + positionPrecedente(): void 
-+ toString(): String</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>1278</x>
-      <y>864</y>
-      <w>210</w>
-      <h>228</h>
-    </coordinates>
-    <panel_attributes>FactureController
---
-- model: Facture
-- view: FactureView
---
-+ associerClient(client: Client): void
-+ associerChef(chef: Chef): void
-+ FactureController(model: Facture, view: FactureView)
-+ getSousTotal(): double
-+ getTotal(): double
-+ getTps(): double
-+ getTvq(): double
-+ payer(): void throws FactureException
-+ fermer(): void throws FactureException
-+ ouvrir(): void throws FactureException
-+ getEtat(): FactureEtat
-+ ajoutPlat(p: PlatChoisi): void
-+ Observer(chef2: Chef): void
-+ updateViewGenererFacture(): String
-+ updateViewtoString(): String
-
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>1302</x>
-      <y>774</y>
-      <w>90</w>
-      <h>54</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;enum&gt;&gt;FactureEtat
---
-OUVERTE
-FERMEE
-PAYEE</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>1542</x>
-      <y>1002</y>
-      <w>90</w>
-      <h>18</h>
-    </coordinates>
-    <panel_attributes>FactureException
---
---</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>1542</x>
-      <y>1056</y>
-      <w>90</w>
-      <h>24</h>
-    </coordinates>
-    <panel_attributes>java.lang.Exception
---
---</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1578</x>
-      <y>1014</y>
-      <w>18</w>
-      <h>54</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1482</x>
-      <y>996</y>
-      <w>72</w>
-      <h>24</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;throws&gt;&gt;
-lt=&lt;.</panel_attributes>
-    <additional_attributes>100.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>822</x>
-      <y>918</y>
-      <w>222</w>
-      <h>174</h>
-    </coordinates>
-    <panel_attributes>PlatAuMenu
---
-- code: int
-- description: String
-- prix: double
-- recette: IngredientPlat
---
-+ PlatAuMenu(code: int, description: String, prix: double)
-+ PlatAuMenu()
 + toString(): String
-+ getCode(): int
-+ setCode(code: int): void
-+ getDescription(): String
-+ setDescription(description: String): void
-+ getPrix(): double
-+ setPrix(prix: double): void
-+ getProportion(): double
-+ getRecette(): IngredientPlat
-+ setRecette(recette: IngredientPlat): void </panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1482</x>
-      <y>672</y>
-      <w>90</w>
-      <h>252</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;400.0;130.0;400.0;130.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1344</x>
-      <y>822</y>
-      <w>18</w>
-      <h>54</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>2106</x>
-      <y>1290</y>
-      <w>90</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>MenuException
---
---</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>2028</x>
-      <y>1314</y>
-      <w>138</w>
-      <h>78</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;throws&gt;&gt;
-lt=&lt;.</panel_attributes>
-    <additional_attributes>210.0;10.0;210.0;110.0;10.0;110.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1344</x>
-      <y>1086</y>
-      <w>570</w>
-      <h>198</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>930.0;310.0;930.0;270.0;360.0;270.0;360.0;170.0;10.0;170.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>1476</x>
-      <y>540</y>
-      <w>210</w>
-      <h>138</h>
-    </coordinates>
-    <panel_attributes>Client
---
-- idClient: int
-- nom: String
-- numeroCarteCredit: String
---
-+ Client(idClient: int, String, String)
-+ getIdClient(): int
-+ setIdClient(idClient: int): void
-+ getNom(): String
-+ setNom(nom: String): void
-+ getNumeroCarteCredit(): String
-+ setNumeroCarteCredit(String): void 
-+ toString(): String</panel_attributes>
+bg=WHITE</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>834</x>
-      <y>1116</y>
-      <w>204</w>
-      <h>138</h>
-    </coordinates>
-    <panel_attributes>PlatSante
---
-- kcal: double
-- chol: double
-- gras: double
---
-+ PlatSante(int, String, double, double, double, double)
-+ PlatSante()
-+ toString(): String
-+ getKcal(): double
-+ setKcal(kcal: double): void
-+ getChol(): double
-+ setChol(chol: double): void
-+ getGras(): double
-+ setGras(gras: double): void</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>924</x>
-      <y>1086</y>
-      <w>18</w>
-      <h>42</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>858</x>
-      <y>768</y>
-      <w>162</w>
-      <h>120</h>
-    </coordinates>
-    <panel_attributes>PlatChoisi
---
-- plat: PlatAuMenu
-- quantite: int
-- etat: EtatPlat
-
-+ PlatChoisi(plat: PlatAuMenu, quantite: int)
-+ toString(): String
-+ getQuantite(): int
-+ setQuantite(quantite: int): void
-+ getPlat(): PlatAuMenu
-+ getEtat(): EtatPlat
-+ setEtat(etat2: EtatPlat): void </panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>2286</x>
-      <y>588</y>
-      <w>162</w>
-      <h>54</h>
-    </coordinates>
-    <panel_attributes>tests
---
-
---
--methodesTests</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1482</x>
-      <y>612</y>
-      <w>816</w>
-      <h>360</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;580.0;1340.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1038</x>
-      <y>984</y>
-      <w>846</w>
-      <h>342</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;120.0;30.0;120.0;370.0;510.0;370.0;510.0;480.0;1300.0;480.0;1300.0;550.0;1390.0;550.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLPackage</id>
-    <coordinates>
-      <x>0</x>
-      <y>738</y>
-      <w>1212</w>
-      <h>822</h>
-    </coordinates>
-    <panel_attributes>Plats</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLPackage</id>
-    <coordinates>
-      <x>1254</x>
-      <y>756</y>
-      <w>942</w>
-      <h>384</h>
-    </coordinates>
-    <panel_attributes>facture</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>660</x>
-      <y>1152</y>
-      <w>156</w>
-      <h>108</h>
-    </coordinates>
-    <panel_attributes>PlatEnfant
---
-- proportion: double
---
-+ PlatEnfant()
-+ PlatEnfant(int, String, double, double)
-+ getProportion(): double
-+ setProportion(proportion: double): void
-+ toString(): String</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>756</x>
-      <y>1086</y>
-      <w>114</w>
-      <h>78</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>170.0;10.0;170.0;40.0;10.0;40.0;10.0;110.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>1278</x>
-      <y>540</y>
-      <w>162</w>
-      <h>126</h>
-    </coordinates>
-    <panel_attributes>Chef
---
-- instance: Chef
-- nom: String
---
-+ Chef(nom: String)
-+ getInstance(nom: String): Chef
-+ getNom(): String
-+ setNom(nom: String): void
-- verifIngredient(verifPlat: PlatChoisi): boolean 
-- preparer(plataPreparer: PlatChoisi): void</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>1002</x>
-      <y>1368</y>
-      <w>198</w>
-      <h>114</h>
-    </coordinates>
-    <panel_attributes>PlatsBuilder
---
-- plat: PlatAuMenu
---
-+ PlatsBuilder()
-+ getPlat(): PlatAuMenu
-+ clear(): PlatsBuilder
-+ descriptionBuild(description: String): PlatsBuilder
-+ prixBuild(prix: double): PlatsBuilder 
-+ IngreBuild(recette: IngredientPlat): PlatsBuilder 
-+ IngreBuild(recette: Ingredient[]): PlatsBuilder </panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1038</x>
-      <y>1026</y>
-      <w>36</w>
-      <h>354</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>40.0;570.0;40.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>798</x>
-      <y>1374</y>
-      <w>174</w>
-      <h>108</h>
-    </coordinates>
-    <panel_attributes>PlatSanteBuilder
---
-+ PlatSanteBuilder()
-+ buildKcal(kcal: double): PlatSanteBuilder 
-+ buildChol(chol: double): PlatSanteBuilder 
-+ buildGras(gras: double): PlatSanteBuilder 
-+ clear(): PlatSanteBuilder
-+ getPlatSante(): PlatSante</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>966</x>
-      <y>1434</y>
-      <w>48</w>
-      <h>18</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>60.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>894</x>
-      <y>1248</y>
-      <w>18</w>
-      <h>138</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;210.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>666</x>
-      <y>1494</y>
-      <w>216</w>
-      <h>60</h>
-    </coordinates>
-    <panel_attributes>PlatsEnfantsBuilder
---
---
-+ PlatsEnfantsBuilder()
-+ creeProportion(proportion: double): PlatsEnfantsBuilder
-+ clear(): PlatsBuilder
-+ getPlatEnfant(): PlatEnfant</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>744</x>
-      <y>1254</y>
-      <w>18</w>
-      <h>252</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;400.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>876</x>
-      <y>1476</y>
-      <w>234</w>
-      <h>66</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>370.0;10.0;370.0;90.0;10.0;90.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>252</x>
-      <y>1188</y>
-      <w>162</w>
-      <h>42</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;interface&gt;&gt;
- EtatPlat
---
---
-+ changerEtat(etatPlat: EtatPlat): boolean</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>42</x>
-      <y>1176</y>
-      <w>150</w>
-      <h>48</h>
-    </coordinates>
-    <panel_attributes>EtatServi
---
---
-- changerEtat(etatPlat: EtatPlat): boolean
-- toString(): String</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>456</x>
-      <y>1188</y>
-      <w>168</w>
-      <h>42</h>
-    </coordinates>
-    <panel_attributes>EtatImpossible
---
-+ changerEtat(etatPlat: EtatPlat): boolean
-+ toString(): String</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>72</x>
-      <y>1086</y>
-      <w>150</w>
-      <h>42</h>
-    </coordinates>
-    <panel_attributes>EtatCommande
---
---
-+ changerEtat(etatPlat: EtatPlat): boolean
-+ toString(): String</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>264</x>
-      <y>1086</y>
-      <w>156</w>
-      <h>42</h>
-    </coordinates>
-    <panel_attributes>EtatEnPreparation
---
---
-+ changerEtat(etatPlat: EtatPlat): boolean
-+ toString(): String</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>432</x>
-      <y>1080</y>
-      <w>168</w>
-      <h>54</h>
-    </coordinates>
-    <panel_attributes>EtatTerminer
---
---
-+ changerEtat(etatPlat: EtatPlat): boolean
-+ toString(): String</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>408</x>
-      <y>1206</y>
-      <w>60</w>
-      <h>18</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;50.0;10.0;40.0;10.0;80.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>186</x>
-      <y>1200</y>
-      <w>78</w>
-      <h>18</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>110.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>144</x>
-      <y>1122</y>
-      <w>198</w>
-      <h>78</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>310.0;110.0;310.0;50.0;10.0;50.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>324</x>
-      <y>1128</y>
-      <w>198</w>
-      <h>72</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;100.0;10.0;40.0;310.0;40.0;310.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>324</x>
-      <y>1122</y>
-      <w>18</w>
-      <h>78</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>414</x>
-      <y>822</y>
-      <w>210</w>
-      <h>114</h>
-    </coordinates>
-    <panel_attributes>IngredientPlat
---
-- recette: ArrayList&lt;Ingredient&gt;
---
-+ IngredientPlat(ingredients: ArrayList&lt;Ingredient&gt;)
-+ IngredientPlat(ingredients: Ingredient[])
-+ getIngredients(): ArrayList&lt;Ingredient&gt;
-+ setIngredients(ingredients: ArrayList&lt;Ingredient&gt;): void
-+ setIngredients(ingredients: Ingredient[]): void
-+ addIngredients(ingredient: Ingredient): void
-+ toString(): String</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>696</x>
-      <y>0</y>
-      <w>306</w>
-      <h>162</h>
-    </coordinates>
-    <panel_attributes>Inventaire
---
-- instance: Inventaire
-- entrepot: HashMap&lt;String, Ingredient&gt;
-- ingredientFactory: IngredientFactory
-- size: int
---
-+ getInstance(): Inventaire
-+ ajoutIngredient(ingredients: Ingredient[]): void throws IngredientException
-+ ajoutIngredient(ingredient: Ingredient): void throws IngredientException
-+ ajouter(typeIngredient: TypeIngredient, etat: EtatIngredient, nom: String): void 
-+ getIngredient(ingre: Ingredient): Ingredient
-+ getSize(): int
-+ getIngredientQuantite(ingredient: Ingredient): double
-+ consommerRecette(recette: IngredientPlat, quantitePlat: int, proportion: double): void 
-+ vider(): void
-+ toString(): String</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>42</x>
-      <y>552</y>
-      <w>234</w>
-      <h>42</h>
-    </coordinates>
-    <panel_attributes>concretecreatorEpice
---
---
-+ creer(nom: String, etat: EtatIngredient): Ingredient 
-+ creer(groupe: groupeIngredient, nom: String): Ingredient </panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>312</x>
-      <y>552</y>
-      <w>234</w>
-      <h>48</h>
-    </coordinates>
-    <panel_attributes>concretecreatorFruit
---
---
-+ creer(nom: String, etat: EtatIngredient): Ingredient 
-+ creer(groupe: groupeIngredient, nom: String): Ingredient </panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>48</x>
-      <y>498</y>
-      <w>228</w>
-      <h>42</h>
-    </coordinates>
-    <panel_attributes>concretecreatorViande
---
---
-+ creer(nom: String, etat: EtatIngredient): Ingredient 
-+ creer(groupe: groupeIngredient, nom: String): Ingredient </panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>312</x>
-      <y>498</y>
-      <w>234</w>
-      <h>42</h>
-    </coordinates>
-    <panel_attributes>concretecreatorLegume
---
---
-+ creer(nom: String, etat: EtatIngredient): Ingredient 
-+ creer(groupe: groupeIngredient, nom: String): Ingredient </panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>168</x>
-      <y>630</y>
-      <w>234</w>
-      <h>42</h>
-    </coordinates>
-    <panel_attributes>concretecreatorLaitier
---
---
-+ creer(nom: String, etat: EtatIngredient): Ingredient 
-+ creer(groupe: groupeIngredient, nom: String): Ingredient </panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>270</x>
-      <y>564</y>
-      <w>54</w>
-      <h>24</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>10.0;20.0;70.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>270</x>
-      <y>510</y>
-      <w>54</w>
-      <h>24</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>10.0;20.0;70.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>288</x>
-      <y>468</y>
-      <w>18</w>
-      <h>174</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>10.0;270.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>162</x>
-      <y>462</y>
-      <w>276</w>
-      <h>48</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>10.0;60.0;10.0;20.0;440.0;20.0;440.0;60.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>192</x>
-      <y>402</y>
-      <w>210</w>
-      <h>42</h>
-    </coordinates>
-    <panel_attributes>creatorIngredient
---
---
-+ creer(nom: String, etat: EtatIngredient): Ingredient 
-+ creer(groupe: groupeIngredient, nom: String): Ingredient </panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>288</x>
-      <y>438</y>
-      <w>18</w>
-      <h>48</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;50.0;10.0;40.0;10.0;60.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>1800</x>
-      <y>996</y>
-      <w>180</w>
-      <h>42</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;interface&gt;&gt;
-FactureEtat
---
-+ changerEtat(etat2: FactureEtat): boolean</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>1608</x>
-      <y>906</y>
-      <w>156</w>
-      <h>42</h>
-    </coordinates>
-    <panel_attributes>FactureEtatFermee
---
-+ changerEtat(etat2: FactureEtat): boolean</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>1806</x>
-      <y>906</y>
-      <w>156</w>
-      <h>42</h>
-    </coordinates>
-    <panel_attributes>FactureEtatOuverte
---
-+ changerEtat(etat2: FactureEtat): boolean</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>2010</x>
-      <y>906</y>
-      <w>150</w>
-      <h>42</h>
-    </coordinates>
-    <panel_attributes>FactureEtatPayee
---
-+ changerEtat(etat2: FactureEtat): boolean</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1884</x>
-      <y>942</y>
-      <w>228</w>
-      <h>66</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;90.0;10.0;60.0;360.0;60.0;360.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1884</x>
-      <y>942</y>
-      <w>18</w>
-      <h>66</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1686</x>
-      <y>942</y>
-      <w>216</w>
-      <h>66</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>340.0;90.0;340.0;60.0;10.0;60.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>936</x>
-      <y>882</y>
-      <w>18</w>
-      <h>48</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1014</x>
-      <y>828</y>
-      <w>276</w>
-      <h>144</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>440.0;220.0;120.0;220.0;120.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLPackage</id>
-    <coordinates>
-      <x>1854</x>
-      <y>1218</y>
-      <w>354</w>
-      <h>216</h>
-    </coordinates>
-    <panel_attributes>menuFact</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1584</x>
-      <y>1074</y>
-      <w>588</w>
-      <h>228</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;190.0;960.0;190.0;960.0;360.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1398</x>
-      <y>660</y>
-      <w>102</w>
-      <h>216</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;340.0;10.0;250.0;150.0;250.0;150.0;120.0;10.0;120.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1014</x>
-      <y>618</y>
-      <w>276</w>
-      <h>198</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;..</panel_attributes>
-    <additional_attributes>10.0;310.0;190.0;310.0;190.0;10.0;440.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1992</x>
-      <y>1254</y>
-      <w>72</w>
-      <h>72</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;30.0;10.0;10.0;100.0;10.0;100.0;100.0;70.0;100.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1482</x>
-      <y>978</y>
-      <w>330</w>
-      <h>54</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;300.0;10.0;300.0;70.0;530.0;70.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1626</x>
-      <y>1032</y>
-      <w>270</w>
-      <h>48</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;throws&gt;&gt;
-lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;60.0;430.0;60.0;430.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>618</x>
-      <y>888</y>
-      <w>216</w>
-      <h>138</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>340.0;210.0;120.0;210.0;120.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>18</x>
-      <y>804</y>
-      <w>852</w>
-      <h>504</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>1400.0;10.0;10.0;10.0;10.0;820.0;520.0;820.0;520.0;710.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>1296</x>
-      <y>1320</y>
-      <w>204</w>
-      <h>300</h>
+      <x>1090</x>
+      <y>810</y>
+      <w>175</w>
+      <h>245</h>
     </coordinates>
     <panel_attributes>Facture
 --
@@ -1103,16 +73,1106 @@ getDescription(): String
 getPlatChoisi(): ArrayList&lt;PlatChoisi&gt;
 getCourant(): int
 getClient(): Client
-getChef(): Chef</panel_attributes>
+getChef(): Chef
+
+
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1548</x>
-      <y>1320</y>
-      <w>204</w>
-      <h>222</h>
+      <x>1100</x>
+      <y>750</y>
+      <w>75</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enum&gt;&gt;FactureEtat
+--
+OUVERTE
+FERMEE
+PAYEE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1300</x>
+      <y>940</y>
+      <w>75</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>FactureException
+--
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1300</x>
+      <y>985</y>
+      <w>75</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>java.lang.Exception
+--
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1330</x>
+      <y>950</y>
+      <w>15</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1260</x>
+      <y>935</y>
+      <w>50</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;throws&gt;&gt;
+lt=&lt;.</panel_attributes>
+    <additional_attributes>80.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>700</x>
+      <y>870</y>
+      <w>185</w>
+      <h>145</h>
+    </coordinates>
+    <panel_attributes>PlatAuMenu
+--
+- code: int
+- description: String
+- prix: double
+- recette: IngredientPlat
+--
++ PlatAuMenu(code: int, description: String, prix: double)
++ PlatAuMenu()
++ toString(): String
++ getCode(): int
++ setCode(code: int): void
++ getDescription(): String
++ setDescription(description: String): void
++ getPrix(): double
++ setPrix(prix: double): void
++ getProportion(): double
++ getRecette(): IngredientPlat
++ setRecette(recette: IngredientPlat): void 
+bg=WHITE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1260</x>
+      <y>645</y>
+      <w>215</w>
+      <h>215</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;410.0;110.0;410.0;110.0;360.0;410.0;360.0;410.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1155</x>
+      <y>790</y>
+      <w>15</w>
+      <h>25</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1770</x>
+      <y>1180</y>
+      <w>75</w>
+      <h>25</h>
+    </coordinates>
+    <panel_attributes>MenuException
+--
+--
+bg=WHITE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1705</x>
+      <y>1200</y>
+      <w>115</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;throws&gt;&gt;
+lt=&lt;.</panel_attributes>
+    <additional_attributes>210.0;10.0;210.0;110.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1135</x>
+      <y>1050</y>
+      <w>475</w>
+      <h>125</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>930.0;230.0;930.0;190.0;360.0;190.0;360.0;90.0;10.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1395</x>
+      <y>535</y>
+      <w>175</w>
+      <h>115</h>
+    </coordinates>
+    <panel_attributes>Client
+--
+- idClient: int
+- nom: String
+- numeroCarteCredit: String
+--
++ Client(idClient: int, String, String)
++ getIdClient(): int
++ setIdClient(idClient: int): void
++ getNom(): String
++ setNom(nom: String): void
++ getNumeroCarteCredit(): String
++ setNumeroCarteCredit(String): void 
++ toString(): String
+layer=2
+bg=WHITE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>710</x>
+      <y>1035</y>
+      <w>170</w>
+      <h>115</h>
+    </coordinates>
+    <panel_attributes>PlatSante
+--
+- kcal: double
+- chol: double
+- gras: double
+--
++ PlatSante(int, String, double, double, double, double)
++ PlatSante()
++ toString(): String
++ getKcal(): double
++ setKcal(kcal: double): void
++ getChol(): double
++ setChol(chol: double): void
++ getGras(): double
++ setGras(gras: double): void
+bg=WHITE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>785</x>
+      <y>1010</y>
+      <w>15</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+bg=WHITE</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>730</x>
+      <y>745</y>
+      <w>135</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>PlatChoisi
+--
+- plat: PlatAuMenu
+- quantite: int
+- etat: EtatPlat
+
++ PlatChoisi(plat: PlatAuMenu, quantite: int)
++ toString(): String
++ getQuantite(): int
++ setQuantite(quantite: int): void
++ getPlat(): PlatAuMenu
++ getEtat(): EtatPlat
++ setEtat(etat2: EtatPlat): void 
+bg=WHITE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1695</x>
+      <y>565</y>
+      <w>135</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>tests
+--
+
+--
+-methodesTests</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1260</x>
+      <y>605</y>
+      <w>505</w>
+      <h>295</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;570.0;150.0;570.0;150.0;350.0;990.0;350.0;990.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>880</x>
+      <y>925</y>
+      <w>705</w>
+      <h>285</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;120.0;10.0;120.0;370.0;510.0;370.0;510.0;480.0;1300.0;480.0;1300.0;550.0;1390.0;550.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>20</x>
+      <y>720</y>
+      <w>1010</w>
+      <h>705</h>
+    </coordinates>
+    <panel_attributes>Plats</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>1060</x>
+      <y>735</y>
+      <w>785</w>
+      <h>320</h>
+    </coordinates>
+    <panel_attributes>facture</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>565</x>
+      <y>1065</y>
+      <w>130</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>PlatEnfant
+--
+- proportion: double
+--
++ PlatEnfant()
++ PlatEnfant(int, String, double, double)
++ getProportion(): double
++ setProportion(proportion: double): void
++ toString(): String
+bg=WHITE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>645</x>
+      <y>1010</y>
+      <w>95</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+bg=WHITE</panel_attributes>
+    <additional_attributes>170.0;10.0;170.0;40.0;10.0;40.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1080</x>
+      <y>555</y>
+      <w>135</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>Chef
+--
+- instance: Chef
+- nom: String
+--
++ Chef(nom: String)
++ getInstance(nom: String): Chef
++ getNom(): String
++ setNom(nom: String): void
+- verifIngredient(verifPlat: PlatChoisi): boolean 
+- preparer(plataPreparer: PlatChoisi): void
+bg=WHITE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>850</x>
+      <y>1245</y>
+      <w>165</w>
+      <h>95</h>
+    </coordinates>
+    <panel_attributes>PlatsBuilder
+--
+- plat: PlatAuMenu
+--
++ PlatsBuilder()
++ getPlat(): PlatAuMenu
++ clear(): PlatsBuilder
++ descriptionBuild(description: String): PlatsBuilder
++ prixBuild(prix: double): PlatsBuilder 
++ IngreBuild(recette: IngredientPlat): PlatsBuilder 
++ IngreBuild(recette: Ingredient[]): PlatsBuilder 
+bg=WHITE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>880</x>
+      <y>960</y>
+      <w>30</w>
+      <h>295</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+bg=WHITE</panel_attributes>
+    <additional_attributes>40.0;570.0;40.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>680</x>
+      <y>1250</y>
+      <w>145</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>PlatSanteBuilder
+--
++ PlatSanteBuilder()
++ buildKcal(kcal: double): PlatSanteBuilder 
++ buildChol(chol: double): PlatSanteBuilder 
++ buildGras(gras: double): PlatSanteBuilder 
++ clear(): PlatSanteBuilder
++ getPlatSante(): PlatSante
+bg=WHITE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>820</x>
+      <y>1300</y>
+      <w>40</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+bg=WHITE</panel_attributes>
+    <additional_attributes>60.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>760</x>
+      <y>1145</y>
+      <w>15</w>
+      <h>115</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+bg=WHITE</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;210.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>570</x>
+      <y>1350</y>
+      <w>180</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>PlatsEnfantsBuilder
+--
+--
++ PlatsEnfantsBuilder()
++ creeProportion(proportion: double): PlatsEnfantsBuilder
++ clear(): PlatsBuilder
++ getPlatEnfant(): PlatEnfant
+bg=WHITE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>635</x>
+      <y>1150</y>
+      <w>15</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+bg=WHITE</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;400.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>745</x>
+      <y>1335</y>
+      <w>195</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+bg=WHITE</panel_attributes>
+    <additional_attributes>370.0;10.0;370.0;90.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>225</x>
+      <y>1095</y>
+      <w>135</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+ EtatPlat
+--
+--
++ changerEtat(etatPlat: EtatPlat): boolean
+bg=WHITE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>50</x>
+      <y>1085</y>
+      <w>125</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>EtatServi
+--
+--
+- changerEtat(etatPlat: EtatPlat): boolean
+- toString(): String
+bg=WHITE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>395</x>
+      <y>1095</y>
+      <w>140</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>EtatImpossible
+--
++ changerEtat(etatPlat: EtatPlat): boolean
++ toString(): String
+bg=WHITE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>75</x>
+      <y>1010</y>
+      <w>125</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>EtatCommande
+--
+--
++ changerEtat(etatPlat: EtatPlat): boolean
++ toString(): String
+bg=WHITE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>235</x>
+      <y>1010</y>
+      <w>130</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>EtatEnPreparation
+--
+--
++ changerEtat(etatPlat: EtatPlat): boolean
++ toString(): String
+bg=WHITE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>375</x>
+      <y>1005</y>
+      <w>140</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>EtatTerminer
+--
+--
++ changerEtat(etatPlat: EtatPlat): boolean
++ toString(): String
+bg=WHITE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>355</x>
+      <y>1110</y>
+      <w>50</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+bg=WHITE</panel_attributes>
+    <additional_attributes>10.0;10.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>170</x>
+      <y>1105</y>
+      <w>65</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+bg=WHITE</panel_attributes>
+    <additional_attributes>110.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>135</x>
+      <y>1040</y>
+      <w>165</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+bg=WHITE</panel_attributes>
+    <additional_attributes>310.0;110.0;310.0;50.0;10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>285</x>
+      <y>1045</y>
+      <w>165</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+bg=WHITE</panel_attributes>
+    <additional_attributes>10.0;100.0;10.0;40.0;310.0;40.0;310.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>285</x>
+      <y>1040</y>
+      <w>15</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+bg=WHITE</panel_attributes>
+    <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>360</x>
+      <y>810</y>
+      <w>175</w>
+      <h>95</h>
+    </coordinates>
+    <panel_attributes>IngredientPlat
+--
+- recette: ArrayList&lt;Ingredient&gt;
+--
++ IngredientPlat(ingredients: ArrayList&lt;Ingredient&gt;)
++ IngredientPlat(ingredients: Ingredient[])
++ getIngredients(): ArrayList&lt;Ingredient&gt;
++ setIngredients(ingredients: ArrayList&lt;Ingredient&gt;): void
++ setIngredients(ingredients: Ingredient[]): void
++ addIngredients(ingredient: Ingredient): void
++ toString(): String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>525</x>
+      <y>55</y>
+      <w>255</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes>Inventaire
+--
+- instance: Inventaire
+- entrepot: HashMap&lt;String, Ingredient&gt;
+- ingredientFactory: IngredientFactory
+- size: int
+--
++ getInstance(): Inventaire
++ ajoutIngredient(ingredients: Ingredient[]): void 
++ ajoutIngredient(ingredient: Ingredient): void 
++ ajouter(typeIngredient: TypeIngredient, etat: EtatIngredient, nom: String): void 
++ getIngredient(ingre: Ingredient): Ingredient
++ getSize(): int
++ getIngredientQuantite(ingredient: Ingredient): double
++ consommerRecette(recette: IngredientPlat, quantitePlat: int, proportion: double): void 
++ vider(): void
++ toString(): String
+bg=WHITE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>50</x>
+      <y>565</y>
+      <w>195</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>concretecreatorEpice
+--
+--
++ creer(nom: String, etat: EtatIngredient): Ingredient 
++ creer(groupe: groupeIngredient, nom: String): Ingredient 
+bg=WHITE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>275</x>
+      <y>565</y>
+      <w>195</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>concretecreatorFruit
+--
+--
++ creer(nom: String, etat: EtatIngredient): Ingredient 
++ creer(groupe: groupeIngredient, nom: String): Ingredient 
+bg=WHITE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>55</x>
+      <y>520</y>
+      <w>190</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>concretecreatorViande
+--
+--
++ creer(nom: String, etat: EtatIngredient): Ingredient 
++ creer(groupe: groupeIngredient, nom: String): Ingredient 
+bg=WHITE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>275</x>
+      <y>520</y>
+      <w>195</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>concretecreatorLegume
+--
+--
++ creer(nom: String, etat: EtatIngredient): Ingredient 
++ creer(groupe: groupeIngredient, nom: String): Ingredient 
+bg=WHITE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>155</x>
+      <y>630</y>
+      <w>195</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>concretecreatorLaitier
+--
+--
++ creer(nom: String, etat: EtatIngredient): Ingredient 
++ creer(groupe: groupeIngredient, nom: String): Ingredient 
+bg=WHITE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>240</x>
+      <y>575</y>
+      <w>45</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>
+bg=WHITE</panel_attributes>
+    <additional_attributes>10.0;20.0;70.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>240</x>
+      <y>530</y>
+      <w>45</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>
+bg=WHITE</panel_attributes>
+    <additional_attributes>10.0;20.0;70.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>255</x>
+      <y>495</y>
+      <w>15</w>
+      <h>145</h>
+    </coordinates>
+    <panel_attributes>
+bg=WHITE</panel_attributes>
+    <additional_attributes>10.0;270.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>150</x>
+      <y>490</y>
+      <w>230</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>
+bg=WHITE</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;20.0;440.0;20.0;440.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>175</x>
+      <y>440</y>
+      <w>175</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>creatorIngredient
+--
+--
++ creer(nom: String, etat: EtatIngredient): Ingredient 
++ creer(groupe: groupeIngredient, nom: String): Ingredient 
+bg=WHITE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>255</x>
+      <y>470</y>
+      <w>15</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+bg=WHITE</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0;10.0;40.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1515</x>
+      <y>935</y>
+      <w>150</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+FactureEtat
+--
++ changerEtat(etat2: FactureEtat): boolean
+bg=WHITE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1355</x>
+      <y>860</y>
+      <w>155</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>FactureEtatFermee
+--
+--
++ changerEtat(etat2: FactureEtat): boolean
++ toString(): String
+bg=WHITE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1520</x>
+      <y>860</y>
+      <w>150</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>FactureEtatOuverte
+--
+--
++ changerEtat(etat2: FactureEtat): boolean
++ toString(): String
+bg=WHITE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1690</x>
+      <y>860</y>
+      <w>145</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>FactureEtatPayee
+--
+--
++ changerEtat(etat2: FactureEtat): boolean
++ toString(): String
+bg=WHITE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1585</x>
+      <y>890</y>
+      <w>190</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+bg=WHITE</panel_attributes>
+    <additional_attributes>10.0;90.0;10.0;60.0;360.0;60.0;360.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1585</x>
+      <y>890</y>
+      <w>15</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+bg=WHITE</panel_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1420</x>
+      <y>895</y>
+      <w>180</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+bg=WHITE</panel_attributes>
+    <additional_attributes>340.0;80.0;340.0;50.0;10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>795</x>
+      <y>840</y>
+      <w>15</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+bg=WHITE</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>860</x>
+      <y>795</y>
+      <w>240</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>460.0;220.0;120.0;220.0;120.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>1560</x>
+      <y>1120</y>
+      <w>295</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>menuFact</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1335</x>
+      <y>1000</y>
+      <w>490</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;190.0;960.0;190.0;960.0;360.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1170</x>
+      <y>655</y>
+      <w>95</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;250.0;170.0;250.0;170.0;120.0;30.0;120.0;30.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>860</x>
+      <y>620</y>
+      <w>230</w>
+      <h>165</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..</panel_attributes>
+    <additional_attributes>10.0;310.0;190.0;310.0;190.0;10.0;440.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1675</x>
+      <y>1150</y>
+      <w>60</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;30.0;10.0;10.0;100.0;10.0;100.0;100.0;70.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1260</x>
+      <y>905</y>
+      <w>265</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;280.0;10.0;280.0;100.0;510.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1370</x>
+      <y>965</y>
+      <w>225</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;throws&gt;&gt;
+lt=&lt;.
+bg=WHITE</panel_attributes>
+    <additional_attributes>10.0;60.0;430.0;60.0;430.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>530</x>
+      <y>865</y>
+      <w>180</w>
+      <h>95</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>340.0;170.0;120.0;170.0;120.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>30</x>
+      <y>775</y>
+      <w>710</w>
+      <h>420</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>1400.0;10.0;10.0;10.0;10.0;820.0;520.0;820.0;520.0;710.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1095</x>
+      <y>1205</y>
+      <w>170</w>
+      <h>250</h>
+    </coordinates>
+    <panel_attributes>FactureController
+--
+- model: Facture
+- view: FactureView
+--
++ associerClient(client: Client): void
++ associerChef(chef: Chef): void
++ FactureController(model: Facture, view: FactureView)
++ getSousTotal(): double
++ getTotal(): double
++ getTps(): double
++ getTvq(): double
++ payer(): void throws FactureException
++ fermer(): void throws FactureException
++ ouvrir(): void throws FactureException
++ getEtat(): FactureEtat
++ ajoutPlat(p: PlatChoisi): void
++ Observer(chef2: Chef): void
++ updateViewGenererFacture(): String
++ updateViewtoString(): String
+bg=WHITE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1305</x>
+      <y>1205</y>
+      <w>175</w>
+      <h>215</h>
     </coordinates>
     <panel_attributes>FactureView
 --
@@ -1137,38 +1197,40 @@ getChef(): Chef</panel_attributes>
 + setClient(client: Client): void
 + setTPSplat(tpsplat: double): void
 + setTVQplat(tvqplat: double): void
-+ setTotal(total: double): void</panel_attributes>
++ setTotal(total: double): void
++ setDate(Date date): void
+bg=WHITE</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1314</x>
-      <y>1086</y>
-      <w>18</w>
-      <h>246</h>
+      <x>1105</x>
+      <y>1050</y>
+      <w>15</w>
+      <h>165</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;390.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;310.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1446</x>
-      <y>1086</y>
-      <w>114</w>
-      <h>342</h>
+      <x>1260</x>
+      <y>1280</y>
+      <w>55</w>
+      <h>15</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>170.0;550.0;120.0;550.0;120.0;60.0;10.0;60.0;10.0;10.0</additional_attributes>
+    <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>738</x>
-      <y>504</y>
-      <w>174</w>
-      <h>72</h>
+      <x>630</x>
+      <y>525</y>
+      <w>145</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
 EtatIngredient
@@ -1178,16 +1240,17 @@ EtatIngredient
 + setQuantite(quantite: double): void 
 + getEtat(): String
 + equals(other: Object): boolean
-</panel_attributes>
+
+bg=WHITE</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>636</x>
-      <y>612</y>
-      <w>162</w>
-      <h>102</h>
+      <x>545</x>
+      <y>615</y>
+      <w>135</w>
+      <h>85</h>
     </coordinates>
     <panel_attributes>etatLiquide
 --
@@ -1200,16 +1263,17 @@ EtatIngredient
 + setQuantite(quantite: double): void
 + getEtat(): String
 + toString(): String
-+ equals(other: Object): boolean</panel_attributes>
++ equals(other: Object): boolean
+bg=WHITE</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>834</x>
-      <y>612</y>
-      <w>156</w>
-      <h>108</h>
+      <x>710</x>
+      <y>615</y>
+      <w>130</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>etatSolide
 --
@@ -1222,54 +1286,58 @@ EtatIngredient
 + getEtat(): String
 + toString(): String
 + equals(other: Object): boolean
-</panel_attributes>
+
+bg=WHITE</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>816</x>
-      <y>570</y>
-      <w>102</w>
-      <h>54</h>
+      <x>695</x>
+      <y>580</y>
+      <w>85</w>
+      <h>45</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <panel_attributes>lt=&lt;&lt;-
+bg=WHITE</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;40.0;150.0;40.0;150.0;70.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>714</x>
-      <y>570</y>
-      <w>120</w>
-      <h>54</h>
+      <x>610</x>
+      <y>580</y>
+      <w>100</w>
+      <h>45</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <panel_attributes>lt=&lt;&lt;-
+bg=WHITE</panel_attributes>
     <additional_attributes>180.0;10.0;180.0;40.0;10.0;40.0;10.0;70.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>486</x>
-      <y>330</y>
-      <w>228</w>
-      <h>48</h>
+      <x>495</x>
+      <y>385</y>
+      <w>190</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>Epice
 --
 --
 + Epice(nom: String, etat: EtatIngredient) 
 + Epice(nom: String, etat: EtatIngredient, quantite: double) 
-+ Epice(groupeingredient: groupeIngredient, nom: String) </panel_attributes>
++ Epice(groupeingredient: groupeIngredient, nom: String) 
+bg=WHITE</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1014</x>
-      <y>330</y>
-      <w>228</w>
-      <h>54</h>
+      <x>1515</x>
+      <y>315</y>
+      <w>190</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>Fruit
 --
@@ -1282,58 +1350,61 @@ EtatIngredient
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>576</x>
-      <y>414</y>
-      <w>240</w>
-      <h>54</h>
+      <x>490</x>
+      <y>450</y>
+      <w>200</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>Laitier
 --
 --
 + Laitier(nom: String, etat: EtatIngredient) 
 + Laitier(nom: String, etat: EtatIngredient, quantite: double) 
-+ Laitier(groupeingredient: groupeIngredient, nom: String)</panel_attributes>
++ Laitier(groupeingredient: groupeIngredient, nom: String)
+bg=WHITE</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>834</x>
-      <y>414</y>
-      <w>240</w>
-      <h>54</h>
+      <x>735</x>
+      <y>450</y>
+      <w>200</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>Legume
 --
 --
 + Legume(nom: String, etat: EtatIngredient) 
 + Legume(nom: String, etat: EtatIngredient, quantite: double) 
-+ Legume(groupeingredient: groupeIngredient, nom: String) </panel_attributes>
++ Legume(groupeingredient: groupeIngredient, nom: String) 
+bg=WHITE</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>744</x>
-      <y>330</y>
-      <w>234</w>
-      <h>48</h>
+      <x>730</x>
+      <y>380</y>
+      <w>220</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>Viande
 --
 --
 + Viande(nom: String, etat: EtatIngredient) 
 + Viande(nom: String, etat: EtatIngredient, quantite: double) 
-+ Viande(groupeingredient: groupeIngredient, nom: String)</panel_attributes>
++ Viande(groupeingredient: groupeIngredient, nom: String)
+bg=WHITE</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>774</x>
-      <y>180</y>
-      <w>126</w>
-      <h>114</h>
+      <x>645</x>
+      <y>215</y>
+      <w>135</w>
+      <h>130</h>
     </coordinates>
     <panel_attributes>&lt;&lt;abstract&gt;&gt;
 Ingredient
@@ -1346,25 +1417,853 @@ Ingredient
 + getNom(): String
 + setNom(nom: String): void
 + getQuantite(): double
-+ setQuantite(quantite: double): void throws IngredientException
++ setQuantite(quantite: double): void 
 + setEtat(etat: EtatIngredient): void
 + getEtat(): EtatIngredient
 + equals(other: Object): boolean
 + getGroupe(): groupeIngredient
-+ toString(): String</panel_attributes>
++ toString(): String
+bg=WHITE</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>1278</x>
-      <y>1290</y>
-      <w>522</w>
-      <h>360</h>
+      <x>1080</x>
+      <y>1170</y>
+      <w>435</w>
+      <h>310</h>
     </coordinates>
     <panel_attributes>Facture
 --
 </panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>1025</x>
+      <y>55</y>
+      <w>1015</w>
+      <h>430</h>
+    </coordinates>
+    <panel_attributes>Sous-Test
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1480</x>
+      <y>90</y>
+      <w>200</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>ViandeTest
+--
+--
++ testConstructorWithNomAndEtat(): void 
++ testConstructorWithNomEtatAndQuantite(): void 
++ testConstructorWithGroupeIngredientAndNom(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1305</x>
+      <y>295</y>
+      <w>190</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>LegumeTest
+--
+--
++ testConstructorWithNomAndEtat(): void 
++ testConstructorWithNomEtatAndQuantite(): void 
++ testConstructorWithGroupeIngredientAndNom(): void </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1345</x>
+      <y>400</y>
+      <w>210</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>LaitierTest
+--
+--
++ testConstructorWithNomAndEtat(): void 
++ testConstructorWithNomEtatAndQuantite(): void 
++ testConstructorWithGroupeIngredientAndNom(): void </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1305</x>
+      <y>345</y>
+      <w>190</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>FruitTest
+--
+--
++ testConstructorWithNomAndEtat(): void 
++ testConstructorWithNomEtatAndQuantite(): void 
++ testConstructorWithGroupeIngredientAndNom(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1685</x>
+      <y>90</y>
+      <w>190</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>EpiceTest
+--
+--
++ testConstructorWithNomAndEtat(): void 
++ testConstructorWithNomEtatAndQuantite(): void 
++ testConstructorWithGroupeIngredientAndNom(): void </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1715</x>
+      <y>320</y>
+      <w>105</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>GroupeIngredientTest
+--
++ testGetEtat(): void 
++ testGetType(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1650</x>
+      <y>145</y>
+      <w>195</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>ConcreteCreatorTest
+--
+- creator: concretecreatorEpice
+- creator2: concretecreatorLegume
+- creator3: concretecreatorFruit
+- creator4: concretecreatorViande
+- creator5: concretecreatorLaitier
+- type: TypeIngredient
+- groupe: groupeIngredient
+- groupe2: groupeIngredient
+- groupe3: groupeIngredient
+- groupe4: groupeIngredient
+- groupe5: groupeIngredient
+--
++ ConcreteCreatorTest() 
++ setUp(): void
++ testCreer(): void 
++ testCreerWithGroupe(): void 
++ testCreerWithNullGroupe(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1345</x>
+      <y>200</y>
+      <w>125</w>
+      <h>85</h>
+    </coordinates>
+    <panel_attributes>EtatLiquideTest
+--
+- etat: etatLiquide
+--
++ setUp(): void 
++ testGetQuantite(): void
++ testSetQuantite(): void 
++ testSetQuantiteNegative(): void
++ testGetEtat(): void
++ testToString(): void
++ testEquals(): void </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1205</x>
+      <y>90</y>
+      <w>135</w>
+      <h>95</h>
+    </coordinates>
+    <panel_attributes>EtatSolideTest
+--
+- etat: etatSolide
+--
++ setUp(): void 
++ testGetQuantite(): void
++ testSetQuantite(): void 
++ testSetQuantiteNegative(): void
++ testGetEtat(): void
++ testToString(): void
++ testEquals(): void </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1855</x>
+      <y>145</y>
+      <w>125</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>IngredientPlatTest
+--
+- ingredient1: Ingredient
+- ingredient2: Ingredient
+- ingredient3: Ingredient
+- ingredientPlat: IngredientPlat
+--
++ setUp(): void 
++ testGetIngredients(): void
++ testSetIngredients(): void
++ testSetIngredientsArray(): void
++ testAddIngredients(): void 
++ testToString(): void
++ testEquals(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1855</x>
+      <y>320</y>
+      <w>125</w>
+      <h>115</h>
+    </coordinates>
+    <panel_attributes>PlatChoisiTest
+--
+- plat: PlatAuMenu
+- platChoisi: PlatChoisi
+--
++ setUp(): void 
++ testToString(): void
++ testGetQuantite(): void
++ testSetQuantite(): void 
++ testSetQuantiteNegative(): void
++ testGetPlat(): void
++ testGetEtat(): void
++ testSetEtat(): void 
++ testSetEtatIncompatible(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1205</x>
+      <y>190</y>
+      <w>135</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>EtatPlatTest
+--
++ testEtatCommande(): void
++ testEtatEnPreparation(): void
++ testEtatImpossible(): void
++ testEtatServi(): void
++ testEtatTerminer(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1190</x>
+      <y>400</y>
+      <w>150</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>PlatsEnfantsBuilderTest
+--
++ platsEnfantsBuilder: PlatsEnfantsBuilder
+--
++ testCreeProportion(): void
++ testClear(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1485</x>
+      <y>150</y>
+      <w>120</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>PlatSanteBuilderTest
+--
++ builder: PlatSanteBuilder
+--
++ testBuildKcal(): void
++ testBuildChol(): void
++ testBuildGras(): void
++ testClear(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1475</x>
+      <y>215</y>
+      <w>160</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>PlatsBuilderTest
+--
++ platsBuilder: PlatsBuilder
+--
++ testDescriptionBuild(): void
++ testPrixBuild(): void
++ testIngreBuildWithIngredientPlat(): void
++ testIngreBuildWithIngredientArray(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1565</x>
+      <y>365</y>
+      <w>125</w>
+      <h>85</h>
+    </coordinates>
+    <panel_attributes>MenuTest
+--
++ menu: Menu
++ menu2: Menu
+--
++ getInstance(): void
++ setDescription(): void
++ getDescription(): void
++ ajouteEtNavigationTest(): void
++ messageFin(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1705</x>
+      <y>375</y>
+      <w>110</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>PlatEnfantTest
+--
++ platEnfant: PlatEnfant
+--
++ getProportion(): void
++ setProportion(): void
++ testToString(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1055</x>
+      <y>245</y>
+      <w>115</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>PlatSanteTest
+--
++ platSante: PlatSante
+--
++ testToString(): void
++ getKcal(): void
++ setKcal(): void
++ getChol(): void
++ setChol(): void
++ getGras(): void
++ setGras(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1055</x>
+      <y>90</y>
+      <w>140</w>
+      <h>145</h>
+    </coordinates>
+    <panel_attributes>ChefTest
+--
+gusteau: Chef
+Frigo: Inventaire
+pain: Ingredient
+boulette: Ingredient
+ketchup: Ingredient
+burgerRecette: IngredientPlat
+burgerMenu: PlatAuMenu
+burger: PlatChoisi
+burger2: PlatChoisi
+--
+ChefTest()
+getInstance(): void
+getNom(): void
+setNom(): void
+cuisiner(): void
+testToString(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1195</x>
+      <y>265</y>
+      <w>100</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>PlatAuMenuTest
+--
+platAuMenu: PlatAuMenu
+--
+PlatAuMenuTest()
+testToString(): void
+getCode(): void
+setCode(): void
+getDescription(): void
+setDescription(): void
+getPrix(): void
+setPrix(): void
+getProportion(): void
+getRecette(): void
+setRecette(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1055</x>
+      <y>340</y>
+      <w>125</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>InventaireTest
+--
+Frigo: Inventaire
+moutarde: Ingredient
+--
+InventaireTest()
+getInstance(): void
+ajouter(): void
+getIngredient(): void
+getSize(): void
+getIngredientQuantite(): void
+consommerRecette(): void
+vider(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1345</x>
+      <y>90</y>
+      <w>130</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>ClientTest
+--
+client1: Client
+--
+ClientTest()
+getIdClient(): void
+setIdClient(): void
+getNom(): void
+setNom(): void
+getNumeroCarteCredit(): void
+setNumeroCarteCredit(): void
+testToString(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1750</x>
+      <y>480</y>
+      <w>15</w>
+      <h>95</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>770</x>
+      <y>285</y>
+      <w>205</w>
+      <h>280</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+bg=WHITE</panel_attributes>
+    <additional_attributes>20.0;10.0;390.0;10.0;390.0;540.0;10.0;540.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>680</x>
+      <y>340</y>
+      <w>40</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+bg=WHITE</panel_attributes>
+    <additional_attributes>60.0;10.0;60.0;140.0;10.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>705</x>
+      <y>340</y>
+      <w>35</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+bg=WHITE</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;140.0;50.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>705</x>
+      <y>340</y>
+      <w>40</w>
+      <h>145</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+bg=WHITE</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;270.0;60.0;270.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>685</x>
+      <y>340</y>
+      <w>35</w>
+      <h>145</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+bg=WHITE</panel_attributes>
+    <additional_attributes>50.0;10.0;50.0;270.0;10.0;270.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>420</x>
+      <y>330</y>
+      <w>190</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Fruit
+--
+--
++ Epice(nom: String, etat: EtatIngredient) 
++ Epice(nom: String, etat: EtatIngredient, quantite: double) 
++ Epice(groupeingredient: groupeIngredient, nom: String) 
+bg=WHITE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>605</x>
+      <y>340</y>
+      <w>115</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+bg=WHITE</panel_attributes>
+    <additional_attributes>210.0;10.0;210.0;40.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>255</x>
+      <y>265</y>
+      <w>400</w>
+      <h>185</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+</panel_attributes>
+    <additional_attributes>780.0;20.0;10.0;20.0;10.0;350.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>185</y>
+      <w>55</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0;90.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>500</x>
+      <y>105</y>
+      <w>35</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>50.0;90.0;10.0;90.0;10.0;10.0;50.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>25</x>
+      <y>0</y>
+      <w>980</w>
+      <h>710</h>
+    </coordinates>
+    <panel_attributes>Ingredient
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1040</x>
+      <y>515</y>
+      <w>225</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>Observer
+bg=blue
+layer=-2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1065</x>
+      <y>530</y>
+      <w>175</w>
+      <h>155</h>
+    </coordinates>
+    <panel_attributes>Singleton
+bg=red
+layer=0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1545</x>
+      <y>1105</y>
+      <w>355</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>Singleton
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>490</x>
+      <y>35</y>
+      <w>320</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>Singleton
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>45</x>
+      <y>980</y>
+      <w>505</w>
+      <h>290</h>
+    </coordinates>
+    <panel_attributes>State
+bg=YELLOW</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>560</x>
+      <y>735</y>
+      <w>470</w>
+      <h>745</h>
+    </coordinates>
+    <panel_attributes>Builder
+fg=BLACK
+bg=ORANGE
+layer=-1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>30</x>
+      <y>405</y>
+      <w>445</w>
+      <h>290</h>
+    </coordinates>
+    <panel_attributes>Factory
+bg=CYAN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>120</x>
+      <y>150</y>
+      <w>180</w>
+      <h>75</h>
+    </coordinates>
+    <panel_attributes>groupeIngredient
+--
+- type: TypeIngredient
+- etat: EtatIngredient
+--
++ groupeIngredient(TypeIngredient, EtatIngredient)
++ getEtat(): EtatIngredient
++ getType(): TypeIngredient
+bg=WHITE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>80</x>
+      <y>65</y>
+      <w>265</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>IngredientFactory
+--
+--
+- groupeIngredientMap: Map&lt;String, groupeIngredient&gt;
++ getGroupeIngredient(TypeIngredient, EtatIngredient): groupeIngredient
++ createCompositeKey(type: TypeIngredient, etat: String): String
+bg=WHITE</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>340</x>
+      <y>90</y>
+      <w>160</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>300.0;40.0;170.0;40.0;170.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>195</x>
+      <y>115</y>
+      <w>15</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+bg=WHITE</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>295</x>
+      <y>195</y>
+      <w>360</w>
+      <h>75</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>700.0;130.0;210.0;130.0;210.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>190</x>
+      <y>220</y>
+      <w>450</w>
+      <h>350</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;350.0;590.0;350.0;590.0;680.0;880.0;680.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>450</x>
+      <y>200</y>
+      <w>535</w>
+      <h>525</h>
+    </coordinates>
+    <panel_attributes>Bridge
+bg=GREEN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>50</x>
+      <y>40</y>
+      <w>355</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>Flyweight
+bg=MAGENTA</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1055</x>
+      <y>1185</y>
+      <w>450</w>
+      <h>285</h>
+    </coordinates>
+    <panel_attributes>MVC
+bg=DARK_GRAY</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1065</x>
+      <y>805</y>
+      <w>765</w>
+      <h>255</h>
+    </coordinates>
+    <panel_attributes>State
+bg=YELLOW</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>0</x>
+      <y>305</y>
+      <w>655</w>
+      <h>515</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>950.0;1010.0;950.0;910.0;10.0;910.0;10.0;20.0;1290.0;10.0</additional_attributes>
   </element>
 </diagram>

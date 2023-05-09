@@ -46,7 +46,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class TestIteration{
 
-    public static void main(String[] args) throws IngredientException, PlatException, MenuException {
+    public static void main(String[] args) throws IngredientException, PlatException, MenuException, FactureException {
         System.out.println("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
                 "⠀⠀⠀⠀⣠⣠⣶⣶⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⢷⣟⡿⠿⣷⣤⣄⠀⠀⠀⠀⠀⠀⠀\n" +
                 "⠀⢀⣾⡟⢛⣽⣶⠿⠷⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡼⣿⠁⠈⣿⣿⠲⣿⢨⣿⠤⢤⠀⠀⠀⠀⠀\n" +
@@ -172,9 +172,26 @@ class TestIteration{
 
         System.out.println("--------Cuisiner le plat--------");
 
-        chef.cuisiner(manger);
+        Facture facture = new Facture("Rotisserie Poulet");
+        FactureView view = new FactureView();
+        FactureController controller = new FactureController(facture, view);
+        controller.associerClient(Joe);
+        controller.Observer(chef);
+        controller.ajoutPlat(manger);
+
+        //chef.cuisiner(manger);
 
         System.out.println("Etat du plat" + manger.getEtat() + "\n\n");
+
+        System.out.println("--------Creer la facture--------");
+
+
+        System.out.println(controller.updateViewtoString() + "\n");
+
+        System.out.println("--------Generer la facture--------");
+
+        controller.payer();
+        System.out.println(controller.updateViewGenererFacture() + "\n");
 
         System.out.println("------------FIN DE L ITERATION-------------");
         System.out.println("N'oublions pas que Domingo est le meilleur");
