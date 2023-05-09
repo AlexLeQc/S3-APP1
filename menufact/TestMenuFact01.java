@@ -47,13 +47,42 @@ import static org.junit.jupiter.api.Assertions.*;
 class TestIteration{
 
     public static void main(String[] args) throws IngredientException, PlatException, MenuException {
-        System.out.println("----DEBUT DES TESTS DE L ITERATION----\n");
+        System.out.println("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+                "⠀⠀⠀⠀⣠⣠⣶⣶⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⢷⣟⡿⠿⣷⣤⣄⠀⠀⠀⠀⠀⠀⠀\n" +
+                "⠀⢀⣾⡟⢛⣽⣶⠿⠷⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡼⣿⠁⠈⣿⣿⠲⣿⢨⣿⠤⢤⠀⠀⠀⠀⠀\n" +
+                "⠀⠸⣏⡾⠉⣽⡀⣦⡀⠀⠈⠙⠶⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠁⡟⠀⠀⠘⢿⠠⡏⣼⠃⠀⣸⡤⣤⠀⠀⠀\n" +
+                "⢀⣴⠿⣧⡄⠙⠁⢸⡇⠀⠀⠀⠀⠈⠻⢶⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡞⠀⢇⡀⠀⠀⠀⠀⢰⠏⠀⣰⠋⢠⡿⣶⡄⠀\n" +
+                "⠸⠟⢻⡇⠹⣦⣠⡿⠃⠀⠀⠀⠀⠀⣄⠀⠙⢷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡴⠷⠚⠋⠀⠀⠀⡤⣾⡟⠀⠘⠁⢀⣿⣧⡟⢧⠀\n" +
+                "⠀⠀⠸⣇⡀⣸⡏⠀⠀⠀⠀⠀⠀⠀⠘⢷⢿⣦⣙⢷⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡴⠚⠉⠀⠀⠀⠀⠀⠀⠀⠀⠛⢷⠀⠀⣴⣶⡿⠏⢡⣿⣷\n" +
+                "⠀⠀⠀⠈⠉⣹⠁⠀⡄⠀⡀⠀⡀⠀⠰⡈⠋⢿⢿⡷⠽⣦⠀⠀⠀⠀⠀⠀⠀⣠⠾⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠷⠤⡼⡁⣀⣴⣧⣀⡏\n" +
+                "⠀⠀⠀⠀⢀⡿⠀⢰⢻⡀⣷⣠⣷⣤⠀⠹⡄⠀⠀⠁⢠⣬⣷⠶⠒⠒⠒⣲⡟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠛⠻⣽⣷⣿⠹⣤\n" +
+                "⠀⠀⠀⠀⢸⡇⠀⠘⡎⣧⠛⣇⠹⣿⣀⣠⣤⠴⠚⠉⠀⠀⠀⣀⡤⠔⠈⠉⠙⠒⠲⢤⣤⣀⠀⠀⠀⠀⠀⠀⣸⠀⠀⠀⠀⢶⡄⠀⠀⠀⠉⣹⣷⠏\n" +
+                "⠀⠀⠀⠀⣿⡇⡀⠀⣷⣿⠀⡼⠚⠻⠀⠀⠀⠀⠀⠀⠀⠀⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠓⠶⢤⣀⠰⠚⣽⠄⠀⣠⣾⡥⠀⠀⠀⠘⡏⠁⠀\n" +
+                "⠀⠀⠀⠀⢿⡇⠉⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⠀⠀⠀⠈⠙⠆⣦⡀⠘⠋⠉⠀⠀⠀⠀⢰⠇⠀⠀\n" +
+                "⠀⠀⠀⠀⢸⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠳⠦⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠀⠀⠀⣼⣀⣀⣀⣀⣀⣠⣿⣄⠀⢀⣰⣌⣻⠆⣀⡏⠀⠀⠀\n" +
+                "⠀⠀⠀⠀⠀⢿⡔⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣦⣀⡀⠀⠀⠀⠀⠀⠀⢴⡟⠀⠀⢴⡇⠀⣀⣀⣠⠤⠤⣴⠟⠀⠀⢡⠽⠁⣠⡟⠁⠀⠀⠀\n" +
+                "⠀⠀⠀⠀⠀⠘⣷⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⣻⣄⡀⠀⠀⠠⡶⣫⠀⢀⡤⠋⠀⣈⣭⡥⠤⠖⠋⠹⠦⣤⣤⣀⣠⡿⠋⠀⠀⠀⠀⠀\n" +
+                "⠀⠀⠀⠀⠀⠀⠘⢿⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠚⠳⢤⣆⠉⠽⠋⠀⢀⣠⠴⠚⠉⠉⠀⠀⠀⠀⠀⠀⠉⢙⡿⠋⠀⠀⠀⠀⠀⠀⠀\n" +
+                "⠀⠀⠀⠀⠀⠀⠀⠀⠻⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠉⠻⣦⣤⠖⠋⠁⠀⠀⠀⠀⠀⠀⠀⢠⣄⣠⡴⣺⡇⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+                "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠛⢷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⠀⠀⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣨⡿⠁⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+                "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢻⣦⡀⠀⠀⢀⣀⣀⣠⡤⠉⠉⠉⠉⠀⠀⠀⢷⠀⠀⠀⠀⠀⠀⠀⠘⣻⡭⢥⣴⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+                "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣼⡆⢀⡀⠀⠀⠀⠀⠀⠀⣴⡾⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+                "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢿⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣶⣟⣥⣳⣿⣷⣴⣖⣀⣐⣾⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+                "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢿⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢛⣦⡽⣿⣻⣭⡽⠿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+                "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⣷⡀⠀⠀⠀⠀⠀⠀⠀⣠⣶⠛⢛⣫⠟⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+                "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠛⠲⢶⡤⢤⣦⠤⠾⠋⠻⣟⣽⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+                "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡸⢀⡜⠁⠀⠀⠀⠀⠸⣾⡆⠀⠀⠀⠀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+                "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣇⡿⠁⠀⠀⠀⠀⠀⠀⢻⣹⡀⢠⣴⡾⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+                "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⡀⣀⣠⣿⢹⡀⠀⠀⠀⢀⣀⣀⣠⣤⣷⣙⡽⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+                "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣽⠯⠿⢷⣛⣫⡤⠬⢭⣷⡄⠀⢿⣯⠤⠶⠶⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" +
+                "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠿⠿⠛⠋⠉⠀⠀⠀⠀⠀⠀⠀⠀⠈⠃⠀⠀⠀⠀");
+        System.out.println("------------DEBUT DES TESTS DE L ITERATION------------\n");
 
         System.out.println("--Creation d'un chef--");
         Chef chef = Chef.getInstance("gusteau");
         System.out.println(chef.toString() + "\n");
 
-        System.out.println("--Creation de l'inventaire--");
+        System.out.println("--------Creation de l'inventaire--------");
         Inventaire congelo = Inventaire.getInstance();
         System.out.println(congelo.toString() + "\n");
 
@@ -72,23 +101,23 @@ class TestIteration{
         System.out.println(carrotte.toString());
         System.out.println(ketchup.toString() + "\n");
 
-        System.out.println("--Ajout des ingredients a l'inventaire--");
+        System.out.println("--------Ajout des ingredients a l'inventaire--------");
 
         congelo.ajoutIngredient(new Ingredient[]{creme, poulet, carrotte, croquette, frite, ketchup,pomme});
         System.out.println(congelo.toString()+ "\n");
 
-        System.out.println("--Creation du menu--");
+        System.out.println("--------Creation du menu--------");
         Menu menu = Menu.getInstance();
         menu.setDescription("Rotisserie poulet orange pour vous servir");
         System.out.println(menu.toString() + "\n");
 
-        System.out.println("--Creation de plat--");
+        System.out.println("--------Creation de plat--------");
         PlatAuMenu soupe = new PlatAuMenu(1, "Soupe creme de poulet", 5.99);
         PlatAuMenu animalerie = new PlatAuMenu(2, "Croquette de poulet", 10.99);
         PlatAuMenu pommes = new PlatAuMenu(3, "Quartier de pomme", 2.99);
         System.out.println(soupe.toString() + "\n");
 
-        System.out.println("--Creation de recette--");
+        System.out.println("--------Creation de recette--------");
         Ingredient creme1 = new Laitier("creme", new etatLiquide(40));
         Ingredient poulet1 = new Viande("poulet", new etatSolide(1));
         Ingredient carrotte1 = new Legume("carrotte", new etatSolide(5));
@@ -109,7 +138,7 @@ class TestIteration{
 
         System.out.println(soupeRecette.toString() + "\n");
 
-        System.out.println("--Associer recette au plat--");
+        System.out.println("--------Associer recette au plat--------");
 
         soupe.setRecette(soupeRecette);
         animalerie.setRecette(croquetteRecette);
@@ -117,7 +146,7 @@ class TestIteration{
 
         System.out.println(soupe.toString() + "\n");
 
-        System.out.println("--Ajout des plats au menu--");
+        System.out.println("--------Ajout des plats au menu--------");
 
         menu.ajoute(soupe);
         menu.ajoute(animalerie);
@@ -125,38 +154,37 @@ class TestIteration{
 
         System.out.println(menu.toString() + "\n");
 
-        System.out.println("--Creation d'un client");
+        System.out.println("--------Creation d'un client--------");
 
         Client Joe = new Client(69, "Sleepy Joe", "6536 4773 4848 4848");
         System.out.println(Joe.toString() + "\n");
 
-        System.out.println("--Naviger dans le menu--");
+        System.out.println("--------Naviger dans le menu--------");
 
         menu.positionSuivante();
         System.out.println(menu.toString() + "\n");
 
 
-        System.out.println("--Choisir plat--");
+        System.out.println("--------Choisir plat--------");
 
         PlatChoisi manger = new PlatChoisi(animalerie, 1);
         System.out.println(manger.toString() + "\n");
 
-        System.out.println("--Cuisiner le plat--");
+        System.out.println("--------Cuisiner le plat--------");
 
         chef.cuisiner(manger);
 
         System.out.println("Etat du plat" + manger.getEtat() + "\n\n");
 
-        System.out.println("----FIN DE L ITERATION---");
-
-
-
-
-
-
-
-
-
+        System.out.println("------------FIN DE L ITERATION-------------");
+        System.out.println("N'oublions pas que Domingo est le meilleur");
+        System.out.println("⠀⠀⠀⠀⠀⠀⠀⠀⣠⣶⣶⣶⣦⠀⠀\n" +
+                "⠀⠀⣠⣤⣤⣄⣀⣾⣿⠟⠛⠻⢿⣷⠀\n" +
+                "⢰⣿⡿⠛⠙⠻⣿⣿⠁⠀⠀⠀⣶⢿⡇\n" +
+                "⢿⣿⣇⠀⠀⠀⠈⠏⠀⠀⠀ Domingo\n" +
+                "⠀⠻⣿⣷⣦⣤⣀⠀⠀⠀⠀⣾⡿⠃⠀\n" +
+                "⠀⠀⠀⠀⠉⠉⠻⣿⣄⣴⣿⠟⠀⠀⠀\n" +
+                "⠀⠀⠀⠀⠀⠀⠀⣿⡿⠟⠁⠀");
 
 
 
