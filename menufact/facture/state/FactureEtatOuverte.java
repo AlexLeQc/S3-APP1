@@ -13,4 +13,8 @@ public class FactureEtatOuverte implements FactureEtat {
     public boolean changerEtat(FactureEtat etat2) {
         return etat2 instanceof FactureEtatPayee || etat2 instanceof  FactureEtatFermee;
     }
+
+    public String toString(){
+        return "Facture etat ouverte";
+    }
 }

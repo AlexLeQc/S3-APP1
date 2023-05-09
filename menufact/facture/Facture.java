@@ -75,7 +75,7 @@ public class Facture {
      * @return la valeur de la TVQ
      */
     public  double tvq(){
-        return TVQ*(TPS+1)*sousTotal();
+        return TVQ*sousTotal();
     }
 
     /**
@@ -153,8 +153,6 @@ public class Facture {
         } else {
             throw new FactureException("L'ajout de plat se fait seulement sur une facture ouverte");
         }
-
-        throw new FactureException("On peut ajouter un plat seulement sur une facture OUVERTE.");
     }
 
     /**
@@ -228,5 +226,9 @@ public class Facture {
 
     public Client getClient(){
         return client;
+    }
+
+    public Chef getChef(){
+        return chef;
     }
 }

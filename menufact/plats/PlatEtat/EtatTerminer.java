@@ -8,15 +8,6 @@ public class EtatTerminer implements EtatPlat{
      */
     @Override
     public boolean changerEtat(EtatPlat etatPlat){
-        return etatPlat instanceof EtatServi || etatPlat instanceof EtatImpossible;
-    }
-
-    /**
-     * Fonction pour ecrire l'etat du plat dans le fenetre de dialogue
-     * @return retourne l'etat commande
-     */
-    @Override
-    public String toString() {
-        return "Terminer";
+        return etatPlat instanceof EtatServi;
     }
 }

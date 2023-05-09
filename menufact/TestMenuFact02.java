@@ -172,7 +172,7 @@ class ClientTest {
 
 class ChefTest {
 
-    Chef gusteau;
+    Chef gusteau = Chef.getInstance("gusteau");
     Inventaire Frigo;
 
     Ingredient pain = new Fruit("pain", new etatSolide(4));
@@ -217,7 +217,7 @@ class ChefTest {
         Frigo = Inventaire.getInstance();
         burgerMenu.setRecette(burgerRecette);
         Frigo.ajoutIngredient(new Ingredient[]{pain, boulette,ketchup});
-        assertThrows(IngredientException.class, () ->{
+        assertThrows(PlatException.class, () ->{
             gusteau.cuisiner(burger2);
         });
         gusteau.cuisiner(burger);
@@ -230,6 +230,7 @@ class ChefTest {
         assertEquals("Chef: {Nom: 'gusteau'}",gusteau.toString());
     }
 }
+
 
 class PlatAuMenuTest {
     PlatAuMenu platAuMenu = new PlatAuMenu(20,"Filet mignon",15.99);
@@ -536,7 +537,7 @@ class EtatPlatTest {
     public void testEtatCommande() {
         EtatPlat etatCommande = new EtatCommande();
         assertEquals(true, etatCommande.changerEtat(new EtatEnPreparation()));
-        assertEquals(true, etatCommande.changerEtat(new EtatImpossible()));
+        assertEquals(false, etatCommande.changerEtat(new EtatImpossible()));
         assertEquals(false, etatCommande.changerEtat(new EtatServi()));
         assertEquals(false, etatCommande.changerEtat(new EtatTerminer()));
     }
@@ -544,9 +545,9 @@ class EtatPlatTest {
     @Test
     public void testEtatEnPreparation() {
         EtatPlat etatEnPreparation = new EtatEnPreparation();
-        assertEquals(true, etatEnPreparation.changerEtat(new EtatServi()));
+        assertEquals(false, etatEnPreparation.changerEtat(new EtatServi()));
         assertEquals(true, etatEnPreparation.changerEtat(new EtatTerminer()));
-        assertEquals(true, etatEnPreparation.changerEtat(new EtatImpossible()));
+        assertEquals(false, etatEnPreparation.changerEtat(new EtatImpossible()));
         assertEquals(false, etatEnPreparation.changerEtat(new EtatCommande()));
     }
 
@@ -562,7 +563,7 @@ class EtatPlatTest {
     @Test
     public void testEtatServi() {
         EtatPlat etatServi = new EtatServi();
-        assertEquals(true, etatServi.changerEtat(new EtatImpossible()));
+        assertEquals(false, etatServi.changerEtat(new EtatImpossible()));
         assertEquals(false, etatServi.changerEtat(new EtatCommande()));
         assertEquals(false, etatServi.changerEtat(new EtatEnPreparation()));
         assertEquals(false, etatServi.changerEtat(new EtatTerminer()));
@@ -572,7 +573,7 @@ class EtatPlatTest {
     public void testEtatTerminer() {
         EtatPlat etatTerminer = new EtatTerminer();
         assertEquals(true, etatTerminer.changerEtat(new EtatServi()));
-        assertEquals(true, etatTerminer.changerEtat(new EtatImpossible()));
+        assertEquals(false, etatTerminer.changerEtat(new EtatImpossible()));
         assertEquals(false, etatTerminer.changerEtat(new EtatCommande()));
         assertEquals(false, etatTerminer.changerEtat(new EtatEnPreparation()));
     }
@@ -1056,6 +1057,264 @@ class ViandeTest {
         assertEquals("Boeuf", viande.getNom());
         assertEquals(groupe, viande.getGroupe());
         assertEquals(etat, viande.getEtat());
+    }
+}
+
+class FactureControllerTest {
+
+    private Inventaire inventaire;
+    ArrayList<Ingredient> ingredientsRecette=new ArrayList<>();
+    groupeIngredient groupebanane;
+    Ingredient banane;
+    IngredientPlat recette;
+    PlatAuMenu platAuMenu;
+    PlatChoisi platChoisi;
+    Facture facture;
+    FactureView view;
+    FactureController controller;
+    Client Snitch;
+    Chef gustau;
+
+    @BeforeEach
+    void setUp() throws IngredientException, PlatException {
+        groupebanane=new groupeIngredient(TypeIngredient.FRUIT, new etatSolide(5));
+        banane= concretecreatorFruit.creer(groupebanane, "banane");
+
+        ingredientsRecette= new ArrayList<>();
+        ingredientsRecette.add(banane);
+
+        inventaire = Inventaire.getInstance();
+        inventaire.ajouter(TypeIngredient.FRUIT, new etatSolide(50), "banane");
+
+
+
+        recette= new IngredientPlat(ingredientsRecette);
+
+        platAuMenu= new PlatAuMenu(1, "menoum plat aux fruits", 10.0);
+        platAuMenu.setRecette(recette);
+
+        platChoisi= new PlatChoisi(platAuMenu, 2);
+
+        facture = new Facture("Ma facture");
+        view= new FactureView();
+        controller= new FactureController(facture,view);
+
+        Snitch= new Client(01,"Snitch", "abcdef");
+        gustau= Chef.getInstance("gustau");
+
+    }
+
+    @Test
+    void afficheFacture() throws PlatException, IngredientException, FactureException {
+        controller.associerClient(Snitch);
+        controller.Observer(gustau);
+
+        String expectedString= "menufact.facture.Facture{date=null, description='Ma facture', etat=Facture etat ouverte, platchoisi=[], courant=-1, client=menufact.Client{idClient=1, nom='Snitch', numeroCarteCredit='abcdef'}, TPS=0.05, TVQ=0.095}";
+
+
+        assertEquals(expectedString, controller.updateViewtoString());
+
+
+        String expectedString2= "menufact.facture.Facture{date=null, description='Ma facture', etat=Facture etat ouverte, platchoisi=[menufact.plats.PlatChoisi{quantite=2, plat=menufact.plats.PlatAuMenu{code=1, description='menoum plat aux fruits', prix=10.0}}], courant=-1, client=menufact.Client{idClient=1, nom='Snitch', numeroCarteCredit='abcdef'}, TPS=0.05, TVQ=0.095}";
+        controller.ajoutPlat(platChoisi);
+        assertEquals(expectedString2, controller.updateViewtoString());
+
+    }
+
+    @Test
+    void genereFacture() throws IngredientException, PlatException, MenuException, FactureException {
+        controller.associerClient(Snitch);
+        controller.Observer(gustau);
+
+        controller.ajoutPlat(platChoisi);
+        controller.payer();
+        String expectedString="Facture generee.\n" +
+                "Date:null\n" +
+                "Description: Ma facture\n" +
+                "Client:Snitch\n" +
+                "Les plats commandes:\n" +
+                "Seq   Plat         Prix   Quantite\n" +
+                "1     menoum plat aux fruits  10.0      2\n" +
+                "          TPS:               1.0\n" +
+                "          TVQ:               1.9\n" +
+                "          Le total est de:   22.9\n";
+        assertEquals(expectedString,controller.updateViewGenererFacture());
+
+
+    }
+
+    @Test
+    void associerClient(){
+        controller.associerClient(Snitch);
+        assertEquals(Snitch,facture.getClient());
+    }
+
+    @Test
+    void observer(){
+        controller.Observer(gustau);
+        assertEquals(gustau,facture.getChef());
+
+    }
+
+    @Test
+    void payer() throws FactureException {
+        controller.payer();
+        assertTrue(facture.getEtat() instanceof FactureEtatPayee);
+    }
+    @Test
+    void fermer() throws FactureException {
+        controller.fermer();
+        assertTrue(facture.getEtat() instanceof FactureEtatFermee);
+    }
+
+    @Test
+    void ouvrir() throws FactureException {
+        controller.fermer();
+        controller.ouvrir();
+        assertTrue(facture.getEtat() instanceof FactureEtatOuverte);
+    }
+
+    @Test
+    void ajoutePlat() throws PlatException, FactureException {
+        controller.Observer(gustau);
+        controller.ajoutPlat(platChoisi);
+        ArrayList<PlatChoisi> expectedPlats = new ArrayList<>();
+        expectedPlats.add(platChoisi);
+        assertEquals(expectedPlats, facture.getPlatChoisi() );
+
+    }
+
+    @Test
+    void getSousTotal() throws PlatException, FactureException {
+        controller.Observer(gustau);
+        controller.ajoutPlat(platChoisi);
+        double expectedSousTotal= 20.0;
+        assertEquals(expectedSousTotal, controller.getSousTotal() );
+
+    }
+
+    @Test
+    void getTps() throws PlatException, FactureException {
+        controller.Observer(gustau);
+        controller.ajoutPlat(platChoisi);
+        double expectedTps= 20.0*0.05;
+        assertEquals(expectedTps, controller.getTps() );
+
+    }
+
+    @Test
+    void getTvq() throws PlatException, FactureException {
+        controller.Observer(gustau);
+        controller.ajoutPlat(platChoisi);
+        double expectedTvq= 20.0*0.095;
+        assertEquals(expectedTvq, controller.getTvq());
+    }
+
+    void getTotal() throws PlatException, FactureException {
+        controller.Observer(gustau);
+        controller.ajoutPlat(platChoisi);
+        double expectedTotal= 20.0*0.095+20.0*0.05+20.0;
+        assertEquals(expectedTotal,controller.getTotal());
+
+    }
+}
+
+class FactureEtatFermeeTest {
+
+    @Test
+    public void testChangerEtat() {
+        FactureEtatFermee etatFermee = new FactureEtatFermee();
+
+        // Test avec un état valide pour changer en FactureEtatPayee
+        boolean expected = true;
+        boolean actual = etatFermee.changerEtat(new FactureEtatPayee());
+        assertEquals(expected, actual);
+
+        // Test avec un état valide pour changer en FactureEtatOuverte
+        expected = true;
+        actual = etatFermee.changerEtat(new FactureEtatOuverte());
+        assertEquals(expected, actual);
+
+        // Test avec un état invalide pour changer en FactureEtatFermee
+        expected = false;
+        actual = etatFermee.changerEtat(new FactureEtatFermee());
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testToString() {
+        FactureEtatFermee etatFermee = new FactureEtatFermee();
+
+        // Test du contenu de la chaîne de caractères renvoyée
+        String expected = "Facture etat fermee";
+        String actual = etatFermee.toString();
+        assertEquals(expected, actual);
+    }
+}
+
+class FactureEtatOuverteTest {
+
+    @Test
+    public void testChangerEtat() {
+        FactureEtatOuverte etatOuverte = new FactureEtatOuverte();
+
+        // Test avec un état valide pour changer en FactureEtatFermee
+        boolean expected = true;
+        boolean actual = etatOuverte.changerEtat(new FactureEtatFermee());
+        assertEquals(expected, actual);
+
+        // Test avec un état valide pour changer en FactureEtatPayee
+        expected = true;
+        actual = etatOuverte.changerEtat(new FactureEtatPayee());
+        assertEquals(expected, actual);
+
+        // Test avec un état invalide pour changer en FactureEtatOuverte
+        expected = false;
+        actual = etatOuverte.changerEtat(new FactureEtatOuverte());
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testToString() {
+        FactureEtatOuverte etatOuverte = new FactureEtatOuverte();
+
+        // Test du contenu de la chaîne de caractères renvoyée
+        String expected = "Facture etat ouverte";
+        String actual = etatOuverte.toString();
+        assertEquals(expected, actual);
+    }
+}
+
+class FactureEtatPayeeTest {
+
+    @Test
+    public void testChangerEtat() {
+        FactureEtatPayee etatPayee = new FactureEtatPayee();
+
+        // Test que l'état ne peut pas être changé en FactureEtatOuverte
+        boolean expected = false;
+        boolean actual = etatPayee.changerEtat(new FactureEtatOuverte());
+        assertEquals(expected, actual);
+
+        // Test que l'état ne peut pas être changé en FactureEtatFermee
+        expected = false;
+        actual = etatPayee.changerEtat(new FactureEtatFermee());
+        assertEquals(expected, actual);
+
+        // Test que l'état ne peut pas être changé en FactureEtatPayee
+        expected = false;
+        actual = etatPayee.changerEtat(new FactureEtatPayee());
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testToString() {
+        FactureEtatPayee etatPayee = new FactureEtatPayee();
+
+        // Test du contenu de la chaîne de caractères renvoyée
+        String expected = "Facture etat payee";
+        String actual = etatPayee.toString();
+        assertEquals(expected, actual);
     }
 }
 //public class TestMenuFact02 {

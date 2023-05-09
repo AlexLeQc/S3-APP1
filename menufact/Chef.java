@@ -57,21 +57,23 @@ public class Chef {
 
     /**
      * Methode pour verifier sil y a assez d'ingredients pour faire la recette
-     * @param verifPlat plat a verifier
+     * @param plat plat a verifier
      * @return true si on peut faire la recette, faux sinon
      * @throws PlatException si le plat ne peux pas etre cuisiner
      * @throws IngredientException S'il manque dingredients
      */
-    private boolean verifIngredient(PlatChoisi verifPlat) throws PlatException, IngredientException{
+    private boolean verifierIngredient(PlatChoisi plat) throws IngredientException, PlatException {
         Inventaire inventaire = Inventaire.getInstance();
-        IngredientPlat recette = verifPlat.getPlat().getRecette();
+        IngredientPlat recette = plat.getPlat().getRecette();
         for (Ingredient ingredient : recette.getIngredients()){
-            double quantiterequise = verifPlat.getQuantite() * verifPlat.getPlat().getProportion() * ingredient.getQuantite();
-            double quantitedispo = inventaire.getIngredientQuantite(ingredient);
-            if (quantitedispo < quantiterequise){
-                verifPlat.setEtat(new EtatImpossible());
-                throw new IngredientException("Il manque les ingredients : " + ingredient.getNom());
+            double quantiteRecette = plat.getQuantite() * plat.getPlat().getProportion() * ingredient.getQuantite();
+            double quantiteInventaire = inventaire.getIngredientQuantite(ingredient);
+
+            if (quantiteInventaire < quantiteRecette){
+                plat.setEtat(new EtatImpossible());
+                throw new IngredientException("Manque Ingredient : " + ingredient.getNom());
             }
+
         }
         return true;
     }
@@ -111,19 +113,20 @@ public class Chef {
 
     /**
      * Changer letat du plat a commande et cuisiner le plat
-     * @param plataCuisiner
+     * @param platACuisiner
      * @return
      * @throws IngredientException
      * @throws PlatException
      */
-    public PlatChoisi cuisiner(PlatChoisi plataCuisiner)throws IngredientException, PlatException {
-        plataCuisiner.setEtat(new EtatCommande());
-        if(verifIngredient(plataCuisiner)){
-            preparer(plataCuisiner);
-            terminer(plataCuisiner);
-            return servir(plataCuisiner);
+    public PlatChoisi cuisiner(PlatChoisi platACuisiner) throws IngredientException, PlatException {
+        platACuisiner.setEtat(new EtatCommande());
+        if (verifierIngredient(platACuisiner)) {
+            preparer(platACuisiner);
+            terminer(platACuisiner);
+            servir(platACuisiner);
+            return platACuisiner;
         } else {
-            return plataCuisiner;
+            return platACuisiner;
         }
     }
 

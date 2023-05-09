@@ -8,15 +8,7 @@ public class EtatServi implements EtatPlat{
      */
     @Override
     public boolean changerEtat(EtatPlat etatPlat){
-        return etatPlat instanceof EtatImpossible;
+        return false;
     }
 
-    /**
-     * Fonction pour ecrire l'etat du plat dans le fenetre de dialogue
-     * @return retourne l'etat commande
-     */
-    @Override
-    public String toString() {
-        return "Servi";
-    }
 }
