@@ -5,8 +5,18 @@ import ingredients.etat.EtatIngredient;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Factory des ingredients
+ */
 public class IngredientFactory {
     private Map<String, groupeIngredient> groupeIngredientMap = new HashMap<>();
+
+    /**
+     * Avoir le groupe de l'ingredient
+     * @param typeIngredient le type de l'ingredient
+     * @param etatIngredient l'etat de l'ingredient
+     * @return
+     */
     public groupeIngredient getGroupeIngredient(TypeIngredient typeIngredient, EtatIngredient etatIngredient){
         String key = createCompositeKey(typeIngredient, etatIngredient.getEtat());
         groupeIngredient groupeingredient = groupeIngredientMap.get(key);
@@ -16,6 +26,7 @@ public class IngredientFactory {
         }
         return groupeingredient;
     }
+
     public String createCompositeKey(TypeIngredient type, String etat){
         return type.toString()+ "-" + etat;
     }

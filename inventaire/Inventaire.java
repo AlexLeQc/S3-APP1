@@ -10,22 +10,40 @@ import ingredients.instanceIngredient.groupeIngredient;
 
 import java.util.HashMap;
 
+/**
+ * Class inventaire singleton
+ */
 public class Inventaire {
+
     private static Inventaire instance = null;
     private HashMap<String, Ingredient> entrepot;
     private IngredientFactory ingredientFactory;
     private int size = 0;
 
+    /**
+     * Constructeur singleton pour avoir seulement un inventaire
+     */
     private Inventaire(){
         entrepot = new HashMap<>();
         ingredientFactory = new IngredientFactory();
     }
+
+    /**
+     * Permet de verifier sil y a un inventaire deja creer
+     * @return l'instance de l'inventaire sil est deja creer, sinon il en creer un
+     */
     public static synchronized Inventaire getInstance(){
         if (instance == null){
             instance = new Inventaire();
         }
         return instance;
     }
+
+    /**
+     * Methode pour ajouter un tableau dingredient a l'inventaire
+     * @param ingredients tableau d'ingredients
+     * @throws IngredientException sil l'ingredient est null
+     */
 
     public void ajoutIngredient(Ingredient[] ingredients) throws IngredientException {
         if(ingredients == null){
@@ -36,6 +54,12 @@ public class Inventaire {
             size++;
         }
     }
+
+    /**
+     * Methode pour ajouter un ingredient dans l'inventaire
+     * @param ingredient un ingredient
+     * @throws IngredientException si l'ingredient est null
+     */
     public void ajoutIngredient(Ingredient ingredient) throws IngredientException{
         if (ingredient == null) {
             throw new IngredientException("Impossible d'ajouter un ingredient à l'inventaire");
@@ -49,6 +73,14 @@ public class Inventaire {
             }
         }
     }
+
+    /**
+     * Ajouter un ingredient directement dans l'inventaire
+     * @param typeIngredient type d'ingredient a ajouter dans l'inventaire
+     * @param etat liquide ou solide
+     * @param nom nom de l'integredient
+     * @throws IngredientException sil y a une erreur dans l'ingredient
+     */
     public void ajouter(TypeIngredient typeIngredient, EtatIngredient etat, String nom) throws IngredientException {
         groupeIngredient groupeIng = ingredientFactory.getGroupeIngredient(typeIngredient, etat);
         String typeIngredientString = typeIngredient.toString();
@@ -105,12 +137,29 @@ public class Inventaire {
         }
         size++;
     }
+
+    /**
+     * Methode pour avoir un ingredient dans l'inventaire
+     * @param ingre ingredient a verifier
+     * @return le nom de l'ingredient
+     */
     public Ingredient getIngredient(Ingredient ingre){
         return entrepot.get(ingre.getNom());
     }
+
+    /**
+     * Methode pour avoir la longeur des ingredients
+     * @return la quantie d'ingredient dans l'inventaire
+     */
     public int getSize(){
         return size;
     }
+
+    /**
+     * Methode pour avoir la quantite de ingredient
+     * @param ingredient a verifier
+     * @return quantite restante de l'ingredient
+     */
     public double getIngredientQuantite(Ingredient ingredient){
         if (entrepot.get(ingredient.getNom()) != null) {
             return entrepot.get(ingredient.getNom()).getQuantite();
@@ -118,6 +167,14 @@ public class Inventaire {
             return 0;
         }
     }
+
+    /**
+     * Methode pour enlever la quantite d'ingredients utilisee pour un plat
+     * @param recette recette a consommee
+     * @param quantitePlat nombre de plat a faire
+     * @param proportion proportion du plat
+     * @throws IngredientException Si la recette est null, il manque d'ingredients ou autre
+     */
     public void consommerRecette(IngredientPlat recette, int quantitePlat, double proportion) throws IngredientException {
         if (recette == null) {
             throw new IngredientException("Recette ne peut pas être null");
@@ -147,6 +204,10 @@ public class Inventaire {
             ingredientCongelateur.setQuantite(qtyInventaire - qtyRecette);
         }
     }
+
+    /**
+     * Methode pour vider l'inventaire
+     */
     public void vider() {
         if (instance != null) {
             entrepot.clear();
@@ -155,7 +216,10 @@ public class Inventaire {
         }
     }
 
-
+    /**
+     * Methode pour afficher l'inventaire
+     * @return une String de l'inventaire
+     */
     public String toString() {
         return "Inventaire: " + entrepot;
     }

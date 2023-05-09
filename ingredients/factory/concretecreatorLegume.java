@@ -7,10 +7,28 @@ import ingredients.etat.EtatIngredient;
 import ingredients.exceptions.IngredientException;
 import ingredients.instanceIngredient.groupeIngredient;
 
+/**
+ * Classe pour instance de legume
+ */
 public class concretecreatorLegume implements creatorIngredient {
+    /**
+     * Creer un legume
+     * @param nom
+     * @param etat
+     * @return
+     * @throws IngredientException
+     */
     public Ingredient creer(String nom, EtatIngredient etat) throws IngredientException {
         return new Legume(nom, etat);
     }
+
+    /**
+     * Creer un legume
+     * @param groupe
+     * @param nom
+     * @return
+     * @throws IngredientException
+     */
 
     public static Ingredient creer(groupeIngredient groupe, String nom) throws IngredientException{
         if (groupe == null){

@@ -1,3 +1,68 @@
+package menufact;
+
+import ingredients.etat.etatLiquide;
+import ingredients.factory.*;
+import ingredients.instanceIngredient.*;
+import ingredients.etat.EtatIngredient;
+import ingredients.etat.etatSolide;
+import ingredients.exceptions.IngredientException;
+import menufact.exceptions.MenuException;
+import menufact.facture.exceptions.FactureException;
+import menufact.plats.PlatAuMenu;
+import menufact.plats.PlatChoisi;
+import ingredients.etat.*;
+//import ingredients.*;
+import inventaire.*;
+import menufact.plats.PlatEnfant;
+import menufact.plats.PlatEtat.*;
+import menufact.plats.PlatSante;
+import menufact.plats.exceptions.PlatException;
+import menufact.facture.*;
+import menufact.facture.exceptions.*;
+import menufact.facture.state.*;
+import ingredients.factory.*;
+
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.*;
+import menufact.plats.platsBuilder.PlatSanteBuilder;
+import menufact.plats.platsBuilder.PlatsBuilder;
+import menufact.plats.platsBuilder.PlatsEnfantsBuilder;
+import org.junit.Before;
+import org.junit.jupiter.api.*;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.EnumMap;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+
+class TestIteration{
+
+    public static void main(String[] args){
+        System.out.println("----DEBUT DES TESTS DE L ITERATION----\n");
+        System.out.println("--Creation d'un chef--");
+        Chef chef = Chef.getInstance("gusteau");
+        System.out.println(chef.toString() + "\n");
+        System.out.println("--Creation de l'inventaire--");
+
+
+
+
+
+
+    }
+
+}
+
+
 //package menufact;
 //
 //import menufact.facture.Facture;
