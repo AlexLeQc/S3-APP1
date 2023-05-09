@@ -46,12 +46,116 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class TestIteration{
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws IngredientException, PlatException, MenuException {
         System.out.println("----DEBUT DES TESTS DE L ITERATION----\n");
+
         System.out.println("--Creation d'un chef--");
         Chef chef = Chef.getInstance("gusteau");
         System.out.println(chef.toString() + "\n");
+
         System.out.println("--Creation de l'inventaire--");
+        Inventaire congelo = Inventaire.getInstance();
+        System.out.println(congelo.toString() + "\n");
+
+        System.out.println("--Creation d'ingredients--");
+        Ingredient creme = new Laitier("creme", new etatLiquide(4000));
+        Ingredient poulet = new Viande("poulet", new etatSolide(20));
+        Ingredient carrotte = new Legume("carrotte", new etatSolide(100));
+
+        Ingredient croquette = new Viande("croquette", new etatSolide(200));
+        Ingredient frite = new Legume("frite", new etatSolide(300));
+        Ingredient ketchup = new Epice("ketchup", new etatLiquide(2000));
+
+        Ingredient pomme = new Fruit("pomme", new etatSolide(200));
+        System.out.println(creme.toString());
+        System.out.println(poulet.toString());
+        System.out.println(carrotte.toString());
+        System.out.println(ketchup.toString() + "\n");
+
+        System.out.println("--Ajout des ingredients a l'inventaire--");
+
+        congelo.ajoutIngredient(new Ingredient[]{creme, poulet, carrotte, croquette, frite, ketchup,pomme});
+        System.out.println(congelo.toString()+ "\n");
+
+        System.out.println("--Creation du menu--");
+        Menu menu = Menu.getInstance();
+        menu.setDescription("Rotisserie poulet orange pour vous servir");
+        System.out.println(menu.toString() + "\n");
+
+        System.out.println("--Creation de plat--");
+        PlatAuMenu soupe = new PlatAuMenu(1, "Soupe creme de poulet", 5.99);
+        PlatAuMenu animalerie = new PlatAuMenu(2, "Croquette de poulet", 10.99);
+        PlatAuMenu pommes = new PlatAuMenu(3, "Quartier de pomme", 2.99);
+        System.out.println(soupe.toString() + "\n");
+
+        System.out.println("--Creation de recette--");
+        Ingredient creme1 = new Laitier("creme", new etatLiquide(40));
+        Ingredient poulet1 = new Viande("poulet", new etatSolide(1));
+        Ingredient carrotte1 = new Legume("carrotte", new etatSolide(5));
+
+        Ingredient croquette1 = new Viande("croquette", new etatSolide(5));
+        Ingredient frite1 = new Legume("frite", new etatSolide(10));
+        Ingredient ketchup1 = new Epice("ketchup", new etatLiquide(20));
+
+        Ingredient pomme1 = new Fruit("pomme", new etatSolide(200));
+
+        ArrayList<Ingredient> ingredient1 = new ArrayList<>(Arrays.asList(creme1, poulet1, carrotte1));
+        ArrayList<Ingredient> ingredient2 = new ArrayList<>(Arrays.asList(croquette1, frite1, ketchup1));
+        ArrayList<Ingredient> ingredient3 = new ArrayList<>(Arrays.asList(pomme1));
+
+        IngredientPlat soupeRecette = new IngredientPlat(ingredient1);
+        IngredientPlat croquetteRecette = new IngredientPlat(ingredient2);
+        IngredientPlat pommeRecette = new IngredientPlat(ingredient3);
+
+        System.out.println(soupeRecette.toString() + "\n");
+
+        System.out.println("--Associer recette au plat--");
+
+        soupe.setRecette(soupeRecette);
+        animalerie.setRecette(croquetteRecette);
+        pommes.setRecette(pommeRecette);
+
+        System.out.println(soupe.toString() + "\n");
+
+        System.out.println("--Ajout des plats au menu--");
+
+        menu.ajoute(soupe);
+        menu.ajoute(animalerie);
+        menu.ajoute(pommes);
+
+        System.out.println(menu.toString() + "\n");
+
+        System.out.println("--Creation d'un client");
+
+        Client Joe = new Client(69, "Sleepy Joe", "6536 4773 4848 4848");
+        System.out.println(Joe.toString() + "\n");
+
+        System.out.println("--Naviger dans le menu--");
+
+        menu.positionSuivante();
+        System.out.println(menu.toString() + "\n");
+
+
+        System.out.println("--Choisir plat--");
+
+        PlatChoisi manger = new PlatChoisi(animalerie, 1);
+        System.out.println(manger.toString() + "\n");
+
+        System.out.println("--Cuisiner le plat--");
+
+        chef.cuisiner(manger);
+
+        System.out.println("Etat du plat" + manger.getEtat() + "\n\n");
+
+        System.out.println("----FIN DE L ITERATION---");
+
+
+
+
+
+
+
+
 
 
 
