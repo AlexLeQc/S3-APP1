@@ -11,12 +11,4 @@ public class EtatImpossible implements EtatPlat{
         return false;
     }
 
-    /**
-     * Fonction pour ecrire l'etat du plat dans le fenetre de dialogue
-     * @return retourne l'etat commande
-     */
-    @Override
-    public String toString() {
-        return "Impossible de servir";
-    }
 }

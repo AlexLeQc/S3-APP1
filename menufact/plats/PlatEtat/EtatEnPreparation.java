@@ -8,15 +8,7 @@ public class EtatEnPreparation implements EtatPlat{
      */
     @Override
     public boolean changerEtat(EtatPlat etatPlat){
-        return etatPlat instanceof EtatServi || etatPlat instanceof EtatTerminer || etatPlat instanceof EtatImpossible;
+        return etatPlat instanceof EtatTerminer;
     }
 
-    /**
-     * Fonction pour ecrire l'etat du plat dans le fenetre de dialogue
-     * @return retourne l'etat commande
-     */
-    @Override
-    public String toString() {
-        return "En preparation";
-    }
 }
