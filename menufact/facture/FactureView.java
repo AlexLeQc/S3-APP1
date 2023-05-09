@@ -7,6 +7,9 @@ import menufact.plats.PlatChoisi;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * Class view du MVC Facture
+ */
 public class FactureView {
     private Date date;
     private String description;
@@ -20,7 +23,10 @@ public class FactureView {
     private double TVQplat;
     private double total;
 
-
+    /**
+     * Methode pour creer la facture
+     * @return factureGenere return le string de la facture genere
+     */
     public String printFactureGenerer(){
         String lesPlats = new String();
         String factureGenere = new String();
@@ -48,6 +54,10 @@ public class FactureView {
         return factureGenere;
     }
 
+    /**
+     * Methode pour generer les informations de la facture
+     * @return String return le string des informations de la facture
+     */
     public String printtoString(){
         return "menufact.facture.Facture{" +
                 "date=" + date +
@@ -61,35 +71,75 @@ public class FactureView {
                 '}';
     }
 
+    /**
+     * Methode pour definir la description de la facture
+     * @param description String de la description de la facture
+     */
     public void setDescription(String description){
         this.description = description;
     }
 
+    /**
+     * Methode pour definir l etat de la facture
+     * @param etat Object de FactureEtat pour definir l etat de la facture
+     */
     public void setEtat(FactureEtat etat){
         this.etat = etat;
     }
 
+    /**
+     * Methode pour definir le plat choisi de la facture
+     * @param platchoisi ArrayList de platchoisi
+     */
     public void setPlatchoisi(ArrayList<PlatChoisi> platchoisi){
         this.platchoisi = platchoisi;
     }
 
+    /**
+     * Methode pour defenir le courant de la facture
+     * @param courant Courant de la facture
+     */
     public void setCourant(int courant){
         this.courant = courant;
     }
 
+    /**
+     * Methode pour definir le client de la facture
+     * @param client Object de la classe client pour la facture
+     */
     public void setClient(Client client){
         this.client = client;
     }
 
+    /**
+     * Methode pour definir la TPS du plat
+     * @param tpsplat TPS du plat
+     */
     public void setTPSplat(double tpsplat){
         TPSplat = tpsplat;
     }
 
+    /**
+     * Methode pour definir la TVQ du plat
+     * @param tvqplat TVQ du plat
+     */
     public void setTVQplat(double tvqplat){
         TVQplat = tvqplat;
     }
 
+    /**
+     * Methode pour definir le total de la facture
+     * @param total Total de la facture
+     */
     public void setTotal(double total){
         this.total = total;
+    }
+
+    /**
+     * Methode pour defenir la date de l impression de la facture
+     * @param date Object de la class Date de l impression de la facture
+     */
+    public void setDate(Date date){
+        this.date = date;
     }
 }

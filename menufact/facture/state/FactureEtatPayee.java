@@ -14,6 +14,10 @@ public class FactureEtatPayee implements FactureEtat{
         return false;
     }
 
+    /**
+     * Methode pour obtenir le string de l etat de la facture
+     * @return le string de l etat de la facture
+     */
     public String toString(){
         return "Facture etat payee";
     }

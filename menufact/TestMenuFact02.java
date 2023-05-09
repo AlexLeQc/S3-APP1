@@ -1109,13 +1109,13 @@ class FactureControllerTest {
         controller.associerClient(Snitch);
         controller.Observer(gustau);
 
-        String expectedString= "menufact.facture.Facture{date=null, description='Ma facture', etat=Facture etat ouverte, platchoisi=[], courant=-1, client=menufact.Client{idClient=1, nom='Snitch', numeroCarteCredit='abcdef'}, TPS=0.05, TVQ=0.095}";
+        String expectedString= "menufact.facture.Facture{date="+ facture.getDate() + ", description='Ma facture', etat=Facture etat ouverte, platchoisi=[], courant=-1, client=menufact.Client{idClient=1, nom='Snitch', numeroCarteCredit='abcdef'}, TPS=0.05, TVQ=0.095}";
 
 
         assertEquals(expectedString, controller.updateViewtoString());
 
 
-        String expectedString2= "menufact.facture.Facture{date=null, description='Ma facture', etat=Facture etat ouverte, platchoisi=[menufact.plats.PlatChoisi{quantite=2, plat=menufact.plats.PlatAuMenu{code=1, description='menoum plat aux fruits', prix=10.0}}], courant=-1, client=menufact.Client{idClient=1, nom='Snitch', numeroCarteCredit='abcdef'}, TPS=0.05, TVQ=0.095}";
+        String expectedString2= "menufact.facture.Facture{date="+ facture.getDate() + ", description='Ma facture', etat=Facture etat ouverte, platchoisi=[menufact.plats.PlatChoisi{quantite=2, plat=menufact.plats.PlatAuMenu{code=1, description='menoum plat aux fruits', prix=10.0}}], courant=-1, client=menufact.Client{idClient=1, nom='Snitch', numeroCarteCredit='abcdef'}, TPS=0.05, TVQ=0.095}";
         controller.ajoutPlat(platChoisi);
         assertEquals(expectedString2, controller.updateViewtoString());
 
@@ -1129,7 +1129,7 @@ class FactureControllerTest {
         controller.ajoutPlat(platChoisi);
         controller.payer();
         String expectedString="Facture generee.\n" +
-                "Date:null\n" +
+                "Date:"+ facture.getDate()+ "\n" +
                 "Description: Ma facture\n" +
                 "Client:Snitch\n" +
                 "Les plats commandes:\n" +
