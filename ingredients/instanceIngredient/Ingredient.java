@@ -84,10 +84,18 @@ public abstract class Ingredient {
         }
     }
 
+    /**
+     * Methode pour obtenir le groupe
+     * @return le groupe
+     */
     public groupeIngredient getGroupe(){
         return groupe;
     }
 
+    /**
+     * Methode pour obtenir le String de l ingredient
+     * @return le string de l ingredient
+     */
     public String toString(){
         return "Ingredient : " + this.getNom() + " Etat : " + etat + "\n";
     }

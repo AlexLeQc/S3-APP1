@@ -33,7 +33,7 @@ public class Facture {
     private final double TVQ = 0.095;
 
     /**
-     *
+     * Methode pour associer un client a la facture
      * @param client le client de la facture
      */
     public void associerClient (Client client) {
@@ -44,9 +44,7 @@ public class Facture {
      * Calcul du sous total de la facture
      * @return le sous total
      */
-    public void associerChef(Chef chef){
-        this.chef = chef;
-    }
+
     public double sousTotal() {
         double soustotal=0;
          for (PlatChoisi p : platchoisi)
@@ -55,7 +53,7 @@ public class Facture {
     }
 
     /**
-     *
+     * Methode pour obtenir le total de la facture
      * @return le total de la facture
      */
     public double total(){
@@ -63,7 +61,7 @@ public class Facture {
     }
 
     /**
-     *
+     * Methode pour obtenir la TPS
      * @return la valeur de la TPS
      */
     public double tps(){
@@ -71,7 +69,7 @@ public class Facture {
     }
 
     /**
-     *
+     * Methode pour obtenir la TVQ
      * @return la valeur de la TVQ
      */
     public  double tvq(){
@@ -79,7 +77,8 @@ public class Facture {
     }
 
     /**
-     * Permet de chager l'état de la facture à PAYEE
+     * Methode pour payer la facture
+     * @throws FactureException
      */
     public void payer() throws FactureException{
         if(etat.changerEtat(new FactureEtatPayee())) {
@@ -88,8 +87,10 @@ public class Facture {
             throw new FactureException("La facture ne peut pas être payée.");
         }
     }
+
     /**
-     * Permet de chager l'état de la facture à FERMEE
+     * Methode pour fermer la facture
+     * @throws FactureException
      */
     public void fermer() throws FactureException{
         if(etat.changerEtat(new FactureEtatFermee())){
@@ -112,7 +113,7 @@ public class Facture {
     }
 
     /**
-     *
+     * Methode pour obtenir l etat de la facture
      * @return l'état de la facture
      */
     public FactureEtat getEtat() {
@@ -120,7 +121,7 @@ public class Facture {
     }
 
     /**
-     *
+     * Constructor de la facture
      * @param description la description de la Facture
      */
     public Facture(String description) {
@@ -131,14 +132,14 @@ public class Facture {
     }
 
     /**
-     *
+     * Methode qui ajoute un plat a la facture
      * @param p un plat choisi
      * @throws FactureException Seulement si la facture est OUVERTE
      */
     public void ajoutePlat(PlatChoisi p) throws FactureException, PlatException {
         if (etat instanceof FactureEtatOuverte) {
             if(p == null){
-                throw new PlatException("Il est impossible de rajouter un plan null à la facture");
+                throw new PlatException("Il est impossible d ajouter un plan null à la facture");
             }
             if (chef == null){
                 throw new FactureException("Il n'y a pas de chef");
@@ -156,79 +157,59 @@ public class Facture {
     }
 
     /**
-     *
-     * @return le contenu de la facture en chaîne de caracteres
+     * Methode pour faire observer chef
+     * @param chef2 Object de la class Chef
      */
-//    @Override
-//    public String toString() {
-//        return "menufact.facture.Facture{" +
-//                "date=" + date +
-//                ", description='" + description + '\'' +
-//                ", etat=" + etat +
-//                ", platchoisi=" + platchoisi +
-//                ", courant=" + courant +
-//                ", client=" + client +
-//                ", TPS=" + TPS +
-//                ", TVQ=" + TVQ +
-//                '}';
-//    }
-
-    /**
-     *
-     * @return une chaîne de caractères avec la facture à imprimer
-     */
-//    public String genererFacture()
-//    {
-//        String lesPlats = new String();
-//        String factureGenere = new String();
-//
-//        int i =1;
-//
-//
-//        factureGenere =   "Facture generee.\n" +
-//                          "Date:" + date + "\n" +
-//                          "Description: " + description + "\n" +
-//                          "Client:" + client.getNom() + "\n" +
-//                          "Les plats commandes:" + "\n" + lesPlats;
-//
-//        factureGenere += "Seq   Plat         Prix   Quantite\n";
-//        for (PlatChoisi plat : platchoisi)
-//        {
-//            factureGenere +=  i + "     " + plat.getPlat().getDescription() +  "  " + plat.getPlat().getPrix() +  "      " + plat.getQuantite() + "\n";
-//            i++;
-//        }
-//
-//        factureGenere += "          TPS:               " + tps() + "\n";
-//        factureGenere += "          TVQ:               " + tvq() + "\n";
-//        factureGenere += "          Le total est de:   " + total() + "\n";
-//
-//        return factureGenere;
-//    }
     public void Observer(Chef chef2) {
         chef = chef2;
     }
 
+    /**
+     * Methode pour obtenir la date
+     * @return date date de la journee
+     */
     public Date getDate(){
         return date;
     }
 
+    /**
+     * Methode pour obtenir la description
+     * @return description description du produit
+     */
     public String getDescription(){
         return description;
     }
 
+    /**
+     * Methode pour obtenir le platchoisi
+     * @return platchoisi return le plat qui est choisi
+     */
     public ArrayList<PlatChoisi> getPlatChoisi(){
         return platchoisi;
     }
 
+    /**
+     * Methode pour obtenir le courant
+     * @return courant return le courant de la facture
+     */
     public int getCourant(){
         return courant;
     }
 
+    /**
+     * Methode pour obtenir le client de la facture
+     * @return client return le client ayant la facture
+     */
     public Client getClient(){
         return client;
     }
 
+    /**
+     * Methode pour obtenir le chef
+     * @return chef return le chef du restaurant
+     */
     public Chef getChef(){
         return chef;
     }
+
 }

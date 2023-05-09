@@ -27,6 +27,12 @@ public class IngredientFactory {
         return groupeingredient;
     }
 
+    /**
+     * Methode pour creer la key
+     * @param type Object de la classe TypeIngredient
+     * @param etat String de l etat
+     * @return la compositekey creer
+     */
     public String createCompositeKey(TypeIngredient type, String etat){
         return type.toString()+ "-" + etat;
     }

@@ -14,6 +14,10 @@ public class FactureEtatOuverte implements FactureEtat {
         return etat2 instanceof FactureEtatPayee || etat2 instanceof  FactureEtatFermee;
     }
 
+    /**
+     * Methode pour obtenir le string de l etat de la facture
+     * @return le string de l etat de la facture
+     */
     public String toString(){
         return "Facture etat ouverte";
     }
